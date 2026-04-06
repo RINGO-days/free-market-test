@@ -1,0 +1,50 @@
+.header{
+    width: 100%;
+    background-color: black;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo{
+    flex: 1;
+}
+.header-logo__img{
+    width: 100%;
+}
+.header-search{
+    flex: 1;
+    text-align: center;
+}
+.header-search__input{
+    width: 80%;
+    padding: 10px 0 10px 10px;
+    font-size: 20px;
+}
+.header-nav{
+    flex: 1;
+}
+.header-nav__item{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20%;
+}
+.logout-button{
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+.mypage{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.sell{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}

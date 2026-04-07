@@ -1,0 +1,52 @@
+/* タイトル */
+.register-ttl{
+    margin: 80px auto;
+    text-align: center;
+}
+
+/* 入力画面 */
+.register-form__box{
+    margin: 0 auto;
+    width: 50%;
+    font-size: 20px;
+}
+.register-form__ttl{
+    margin-bottom: 0px;
+}
+.register-form__input{
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+}
+.error-box{
+    height: 30px;
+    color: red;
+}
+
+/* 送信ボタン */
+.register-form__submit-box{
+    margin-top: 80px;
+    width: 50%;
+    margin: 80px auto 30px auto;
+}
+.register-form__button{
+    width: 100%;
+    background-color: #ff4500;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+}
+
+/* ログイン画面へ */
+.login-box{
+    text-align: center;
+}
+.login{
+    text-decoration: none;
+    font-size: 20px;
+    color: blue;
+}
+
+

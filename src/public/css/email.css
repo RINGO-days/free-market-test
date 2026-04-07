@@ -1,0 +1,15 @@
+.content{
+    text-align: center;
+    margin-top: 200px;
+}
+.verify-box{
+    margin: 0 auto;
+    text-align: center;
+}
+.verify-button{
+    margin-top: 30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    font-size: 20px;
+}

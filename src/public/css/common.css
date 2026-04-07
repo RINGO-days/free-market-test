@@ -5,12 +5,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100px;
 }
 .header-logo{
     flex: 1;
 }
 .header-logo__img{
-    width: 100%;
+    width: 80%;
 }
 .header-search{
     flex: 1;
@@ -26,8 +27,9 @@
 }
 .header-nav__item{
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 20%;
+    gap: 5%;
 }
 .logout-button{
     background-color: transparent;

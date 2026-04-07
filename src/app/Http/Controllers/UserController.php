@@ -10,4 +10,14 @@ class UserController extends Controller
     {
         return view('index');
     }
+    
+    public function email() //後で消す
+    {
+        return view('auth.email');
+    }
+
+    public function profile()
+    {
+        return view('auth.profile');
+    }
 }

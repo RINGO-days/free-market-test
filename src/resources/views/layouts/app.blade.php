@@ -16,13 +16,16 @@
             </a>
         </div>
         <div class="header-search">
+            @if($nav ?? true)
             <input class="header-search__input"type="text" placeholder="何をお探しですか？">
+            @endif
         </div>
         <div class="header-nav">
+            @if($nav ?? true)
             <nav>
                 <ul class="header-nav__item">
                     <li>
-                        <form action="" method="post">
+                        <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="logout-button">ログアウト</button>
                         </form>
@@ -31,6 +34,7 @@
                     <li><a class="sell" href="">出品</a></li>
                 </ul>
             </nav>
+            @endif
         </div>
     </header>
     <main>

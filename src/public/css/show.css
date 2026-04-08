@@ -1,0 +1,42 @@
+.product-show__box{
+    display: flex;
+    justify-content: space-around;
+}
+/* 商品画像 */
+.product-image{
+    width: 250px;
+    position: sticky;
+}
+
+/* 商品タイトルから購入リンクまで */
+.product-show__content{
+    width: 40%;
+}
+.product-number__box{
+    display: flex;
+    justify-content: space-around;
+}
+.product-buy{
+    width: 100%;
+}
+.product-buy__link{
+    display: block;
+    width: 100%;
+    background-color: #ff4500;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 0;
+}
+
+/* 商品説明からconditionまで */
+.product-description{
+    white-space: pre-wrap;
+}
+
+
+
+*{
+    border: red 0.5px solid;
+}

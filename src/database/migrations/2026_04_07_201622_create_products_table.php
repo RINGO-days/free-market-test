@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('brand')->nullable();
             $table->integer('price');
-            $table->unsignedBigInteger('number_of_nice');
+            $table->unsignedBigInteger('number_of_like');
             $table->unsignedBigInteger('number_of_comment');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('condition_id');

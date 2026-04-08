@@ -17,7 +17,9 @@
         </div>
         <div class="header-search">
             @if($nav ?? true)
-            <input class="header-search__input"type="text" placeholder="何をお探しですか？">
+            <form action="/search" method="get">
+                <input class="header-search__input"type="text" name="keyword" placeholder="何をお探しですか？">
+            </form>
             @endif
         </div>
         <div class="header-nav">

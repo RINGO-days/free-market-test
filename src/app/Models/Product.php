@@ -15,7 +15,7 @@ class Product extends Model
         'image',
         'brand',
         'price',
-        'number_of_nice',
+        'number_of_like',
         'number_of_comment',
         'category_id',
         'description',
@@ -33,5 +33,19 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getFormatPriceAttribute()
+    {
+        return '￥' . number_format($this->price) . '(税込)';
+    }
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if(!empty($keyword)){
+            $query->where('name' , 'like' , '%' . $keyword . '%');
+        }
+        return $query;
+    }
+
 
 }

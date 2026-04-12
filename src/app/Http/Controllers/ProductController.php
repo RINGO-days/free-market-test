@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Like;
 use App\Models\User;
 use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
 
 class ProductController extends Controller
 {
@@ -63,7 +64,7 @@ class ProductController extends Controller
         return view('products.buy');
     }
 
-    public function addComment(Request $request,$id)
+    public function addComment(CommentRequest $request,$id)
     {
         Comment::create([
             'user_id' => auth()->id(),

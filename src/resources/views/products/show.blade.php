@@ -72,8 +72,11 @@
         <form action="/comment/{{$product->id}}" method="post">
             @csrf
             <div class="product-comment__box">
-                <textarea class="comment-textarea" name="comment" rows="10"></textarea>
+                <textarea class="comment-textarea" name="comment" rows="5"></textarea>
             </div>
+            @error('comment')
+                {{$message}}
+            @enderror
             <div class="product-comment__submit">
                 <button class="product-comment__submit-button">コメントを送信する</button>
             </div>

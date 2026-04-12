@@ -135,6 +135,7 @@
 .comment-textarea{
     width: 100%;
     border-radius: 3px;
+    font-size: 20px;
 }
 
 .product-comment__submit{
@@ -150,6 +151,7 @@
     padding: 10px 0;
     color: white;
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 

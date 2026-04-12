@@ -56,8 +56,13 @@
         @if($product->comments->count() > 0)
             @foreach($product->comments as $comment)
                 <div class="user-comment__box">
-                    <img  class="user-image" src="/img/テストユーザープロフィール画像.png" alt="プロフィール画像"><!--メール認証実装後にuser-imageにかえる-->
-                    <p>{{$comment->comment}}</p>
+                    <div class="user-comment__user-info">
+                        <img  class="user-image" src="/img/テストユーザープロフィール画像.png" alt="プロフィール画像"> <!--メール認証実装後にuser-imageにかえる-->
+                        <span>{{$comment->user->name}}</span>
+                    </div>
+                    <div class="user-comment">
+                        <span>{{$comment->comment}}</span>
+                    </div>
                 </div>
             @endforeach
         @else
@@ -67,15 +72,12 @@
         <form action="/comment/{{$product->id}}" method="post">
             @csrf
             <div class="product-comment__box">
-                <input class="comment-input" type="text" name="comment">
+                <textarea class="comment-textarea" name="comment" rows="10"></textarea>
             </div>
             <div class="product-comment__submit">
-                <button class="product-comment__submit">コメントを送信する</button>
+                <button class="product-comment__submit-button">コメントを送信する</button>
             </div>
         </form>
-
-
-
     </div>
 </div>
 @endsection

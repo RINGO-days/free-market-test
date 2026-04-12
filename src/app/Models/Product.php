@@ -25,13 +25,21 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
-    public function conditions()
+    public function condition()
     {
         return $this->belongsTo(Condition::class);
     }
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function getFormatPriceAttribute()
@@ -45,6 +53,11 @@ class Product extends Model
             $query->where('name' , 'like' , '%' . $keyword . '%');
         }
         return $query;
+    }
+
+    public function likeBy($user):bool
+    {
+        return $this->likes()->where('user_id',$user->id)->exists();
     }
 
 

@@ -3,40 +3,142 @@
     justify-content: space-around;
 }
 /* 商品画像 */
-.product-image{
-    width: 250px;
+.product-image__sidebar{
     position: sticky;
+    top: 0;
+    height: fit-content;
+    width: 30%;
+}
+.product-image{
+    width: 100%;
 }
 
-/* 商品タイトルから購入リンクまで */
+/* 商品タイトル、ブランド、価格 */
 .product-show__content{
     width: 40%;
 }
+.product-brand{
+    font-size: 20px;
+    margin-top: -15px;
+}
+.product-price{
+    font-size: 30px;
+}
+
+/* いいね、コメントbox */
 .product-number__box{
     display: flex;
     justify-content: space-around;
+    width: 50%;
 }
+
+/* いいね数 */
+.product-number_of_like__box{
+    position: relative;
+}
+.product-number_of_like__image-button{
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+.product-number_of_like__number{
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* コメント数 */
+.product-number_of_comment__box{
+    position: relative;
+}
+.product-number_of_comment__number{
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* 購入リンク */
 .product-buy{
     width: 100%;
 }
 .product-buy__link{
     display: block;
-    width: 100%;
     background-color: #ff4500;
     text-decoration: none;
     color: white;
     text-align: center;
     margin: 20px auto;
     padding: 10px 0;
+    font-size: 20px;
 }
 
-/* 商品説明からconditionまで */
+/* 商品説明 */
 .product-description{
     white-space: pre-wrap;
 }
 
-
-
-*{
-    border: red 0.5px solid;
+/* 商品カテゴリ */
+.product-category{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.product-category__ttl{
+    flex: 1;
+}
+.product-category__item__box{
+    flex: 1;
+}
+.product-category__item{
+    background-color: #d3d3d3;
+    border-radius: 20px;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+
+/* 商品の状態 */
+.product-condition{
+    display: flex;
+    align-items: center;
+}
+.product-condition__ttl{
+    flex: 1;
+}
+.product-condition__item{
+    flex: 1;
+}
+
+.user-comment__box{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.user-image{
+    width: 150px;
+}
+
+.product-comment__box{
+    margin: 0 auto;
+    width: 70%;
+
+}
+.comment-input{
+    background-color: #d3d3d3;
+    width: 100%;
+    border: none;
+}
+
+.product-comment__submit{
+    text-align: center;
+    background-color: #ff4500;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    height: 20px;
+    margin-top: 20px;
+    border: none;
+}
+
+

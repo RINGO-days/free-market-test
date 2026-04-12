@@ -20,6 +20,12 @@ class ProductsTableSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => 'testtest'
         ]);
+        User::create([
+            'name' => 'example_user',
+            'email' => 'example@example.com',
+            'image' => '/img/テストユーザープロフィール画像.png',
+            'password' => 'exampleexamle'
+        ]);
 
         $test_user = User::first();
 
@@ -32,7 +38,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
-            'condition_id' => 1
+            'condition_id' => 1,
+            'status' => 1
         ]);
         $product->categories()->attach([1,5]);
 
@@ -45,7 +52,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高速で信頼性の高いハードディスク',
-            'condition_id' => 2
+            'condition_id' => 2,
+            'status' => 1
         ]);
         $product->categories()->attach([2]);
 
@@ -58,7 +66,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '新鮮な玉ねぎ３束のセット',
-            'condition_id' => 3
+            'condition_id' => 3,
+            'status' => 1
         ]);
         $product->categories()->attach([10]);
 
@@ -70,7 +79,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'クラシックなデザインの革靴',
-            'condition_id' => 4
+            'condition_id' => 4,
+            'status' => 1
         ]);
         $product->categories()->attach([1,5]);
 
@@ -82,7 +92,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高性能なノートパソコン',
-            'condition_id' => 1
+            'condition_id' => 1,
+            'status' => 1
         ]);
         $product->categories()->attach([2]);
 
@@ -95,7 +106,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高音質のレコーディング用マイク',
-            'condition_id' => 2
+            'condition_id' => 2,
+            'status' => 1
         ]);
         $product = Product::create([
             
@@ -106,7 +118,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'おしゃれなショルダーバック',
-            'condition_id' => 3
+            'condition_id' => 3,
+            'status' => 1
         ]);
         $product->categories()->attach([1,4]);
 
@@ -119,7 +132,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '使いやすいタンブラー',
-            'condition_id' => 4
+            'condition_id' => 4,
+            'status' => 1
         ]);
         $product->categories()->attach([10]);
 
@@ -132,7 +146,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '手動のコーヒーミル',
-            'condition_id' => 1
+            'condition_id' => 1,
+            'status' => 1
         ]);
         $product->categories()->attach([10]);
 
@@ -144,7 +159,8 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '便利なメイクアップセット',
-            'condition_id' => 2
+            'condition_id' => 2,
+            'status' => 1
         ]);
         $product->categories()->attach([4,6]);
     }

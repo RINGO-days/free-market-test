@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('number_of_comment');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('condition_id');
+            $table->unsignedBigInteger('status');
             $table->timestamps();
         });
     }

@@ -58,6 +58,11 @@ class ProductController extends Controller
         return back();
     }
 
+    public function buy($id)
+    {
+        return view('products.buy');
+    }
+
     public function addComment(Request $request,$id)
     {
         Comment::create([

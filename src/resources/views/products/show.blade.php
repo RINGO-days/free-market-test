@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="">
-            <a  class="product-buy__link" href="">購入手続きへ</a>
+            <a  class="product-buy__link" href="/buy/{{$product->id}}">購入手続きへ</a>
         </div>
         <h2>商品説明</h2>
         <div class="product-description__box">

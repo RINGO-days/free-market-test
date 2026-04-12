@@ -1,0 +1,34 @@
+/* タブ切り替え装飾 */
+.tab-box{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px gray solid;
+    font-size: 20px;
+}
+.tab-box__inner{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+.tab-rink{
+    text-decoration: none;
+}
+
+
+/* 商品カード */
+.product-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0 auto;
+    width: 90%;
+}
+.product-card{
+    width: 200px;
+    border: gray;
+    box-shadow: 5px 5px 3px #d3d3d3;
+}
+.product-card__image{
+    width: 100%;
+}

@@ -59,11 +59,6 @@ class ProductController extends Controller
         return back();
     }
 
-    public function buy($id)
-    {
-        return view('products.buy');
-    }
-
     public function addComment(CommentRequest $request,$id)
     {
         Comment::create([
@@ -72,5 +67,11 @@ class ProductController extends Controller
             'comment' => $request->comment
         ]);
         return back();
+    }
+
+    public function buy($id)
+    {
+        $product = Product::find($id);
+        return view('products.buy',compact('product'));
     }
 }

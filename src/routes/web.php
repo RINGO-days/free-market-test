@@ -21,5 +21,7 @@ Route::get('/purchase/success/{id}', [PurchaseController::class, 'success']);
 
 
 Route::get('/myList',[ProfileController::class,'myList']);
+Route::get('/myList/editProfile',[ProfileController::class,'editProfile']);
+Route::post('/myList/updateProfile',[ProfileController::class,'updateProfile']);
 Route::get('/profile',[ProfileController::class,'profile']);
 Route::post('/profile/create/',[ProfileController::class,'profileCreate']);

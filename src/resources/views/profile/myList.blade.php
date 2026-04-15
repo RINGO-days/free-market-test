@@ -10,7 +10,7 @@
         <img class="image" src="{{asset('storage/' .$user->image )}}" alt="ユーザー画像">
     </div>
     <h2 class="user-name">{{$user->name}}</h2>
-    <a class="edit-profile__link" href="">プロフィールを編集</a>
+    <a class="edit-profile__link" href="/myList/editProfile">プロフィールを編集</a>
 </div>
 <div class="tab-box">
     <div class="tab-box__inner">

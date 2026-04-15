@@ -48,4 +48,18 @@ class ProfileController extends Controller
         $user = User::find(auth()->id());
         return view('profile.myList',compact('user','products'));
     }
+
+    public function editProfile()
+    {
+        $user = auth()->user();
+        return view('profile.editProfile',compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = User::find(auth()->id());
+        $user->update($request->all());
+
+        return redirect('/myList');
+    }
 }

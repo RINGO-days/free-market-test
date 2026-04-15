@@ -18,7 +18,10 @@ class ProfileController extends Controller
     public function profileCreate(ProfileRequest $request)
     {
         $profile = User::find(auth()->id());
-        $path = $request->image->store('profiles','public');
+        $path = $request->image;
+        if($path){
+            $path = $path->store('profiles','public');
+        }
 
         $profile->update([
             'image' => $path,
@@ -55,11 +58,13 @@ class ProfileController extends Controller
         return view('profile.editProfile',compact('user'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(ProfileRequest $request)
     {
         $user = User::find(auth()->id());
-        $user->update($request->all());
-
+        $updateItem = $request->all();
+        $path = $request->file('image')->store('profiles', 'public');
+        $updateItem['image'] = $path;
+        $user->update($updateItem);
         return redirect('/myList');
     }
 }

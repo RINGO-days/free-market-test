@@ -7,7 +7,7 @@
 @section('main')
 <div class="user-info">
     <div class="image-box">
-        <img class="image" src="{{asset('storage/' .$user->image )}}" alt="ユーザー画像">
+        <img class="image" src="{{$user->profile_image}}" alt="ユーザー画像">
     </div>
     <h2 class="user-name">{{$user->name}}</h2>
     <a class="edit-profile__link" href="/myList/editProfile">プロフィールを編集</a>

@@ -9,7 +9,8 @@
 <form action="/myList/updateProfile" enctype="multipart/form-data" method="post">
     @csrf
     <div class="profile-img__box">
-        <input type="file" name="image" value="">
+        <img class="profile-img" src="{{$user->profile_image}}" alt="現在のプロフィール画像">
+        <input type="file" name="image" value="{{asset('storage/' . $user->image)}}">
         <div class="error-box">
                 @error('image')
                     {{$message}}

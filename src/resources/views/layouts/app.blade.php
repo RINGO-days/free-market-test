@@ -33,7 +33,7 @@
                             <button class="logout-button">ログアウト</button>
                         </form>
                     </li>
-                    <li><a class="mypage"href="">マイページ</a></li>
+                    <li><a class="mypage"href="/myList">マイページ</a></li>
                     <li><a class="sell" href="">出品</a></li>
                 </ul>
             </nav>

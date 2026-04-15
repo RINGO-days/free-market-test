@@ -13,12 +13,15 @@
 </div>
 <div class="product-box">
     @foreach($products as $product)
-        <a href="/show/{{$product->id}}">
-            <div class="product-card">
+        <div class="product-card">
+            <a class="product-card-link" href="/show/{{$product->id}}" id="card">
                 <img class="product-card__image" src="{{$product->image}}" alt="商品画像">
                 <span>{{$product->name}}</span>
+                @if($product->status === 2)
+                    <span class="sold-icon">sold</span>
+                @endif
+            </a>
         </div>
-        </a>
     @endforeach
 </div>
 @endsection

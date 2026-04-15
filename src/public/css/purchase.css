@@ -40,6 +40,7 @@
     top: 50%;
     right: 5px;
     transform: translate(-50%,-50%);
+    pointer-events: none;
 }
 .address__box{
     border-bottom: 1px #d3d3d3 solid;
@@ -54,26 +55,17 @@
 .address-change__link{
     text-decoration: none;
 }
-.confirm__box{
-    width: 30%;
-    text-align: center;
+.confirm-box{
+    width: 35%;
 }
-.confirm-item__box{
+.confirm__table{
+    width: 100%;
+}
+.confirm-item__row{
     border: black 1px solid;
 }
-.confirm-price__box{
-    border-bottom: black 1px solid;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    padding: 30px 0;
-}
-.confirm-payment__box{
-    display: flex;
-    padding: 30px 0;
-}
 .confirm-item{
-    flex: 1;
+    padding: 50px 0;
 }
 .buy-button{
     margin-top: 30px;
@@ -82,4 +74,10 @@
     color: white;
     padding: 10px 0;
     border: none;
+    cursor: pointer;
+}
+.error-box{
+    color: red;
+    margin-top: 10px;
+    margin-left: 50px;
 }

@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="">
-            <a  class="product-buy__link" href="/buy/{{$product->id}}">購入手続きへ</a>
+            <a  class="product-buy__link" href="/purchase/{{$product->id}}">購入手続きへ</a>
         </div>
         <h2>商品説明</h2>
         <div class="product-description__box">
@@ -57,7 +57,7 @@
             @foreach($product->comments as $comment)
                 <div class="user-comment__box">
                     <div class="user-comment__user-info">
-                        <img  class="user-image" src="/img/テストユーザープロフィール画像.png" alt="プロフィール画像"> <!--メール認証実装後にuser-imageにかえる-->
+                        <img  class="user-image" src="{{asset('storage/' .$comment->user->image )}}" alt="プロフィール画像">
                         <span>{{$comment->user->name}}</span>
                     </div>
                     <div class="user-comment">
@@ -74,9 +74,11 @@
             <div class="product-comment__box">
                 <textarea class="comment-textarea" name="comment" rows="5"></textarea>
             </div>
-            @error('comment')
-                {{$message}}
-            @enderror
+            <div class="error-box" style="color: red;">
+                @error('comment')
+                    {{$message}}
+                @enderror
+            </div>
             <div class="product-comment__submit">
                 <button class="product-comment__submit-button">コメントを送信する</button>
             </div>

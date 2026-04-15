@@ -18,6 +18,7 @@ class Product extends Model
         'number_of_like',
         'number_of_comment',
         'category_id',
+        'status',
         'description',
         'condition_id'
 ];

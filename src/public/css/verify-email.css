@@ -1,0 +1,32 @@
+.content{
+    text-align: center;
+    margin-top: 200px;
+}
+.verify-box{
+    margin: 0 auto;
+    text-align: center;
+}
+.verify-button{
+    margin-top: 30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    font-size: 20px;
+    cursor: pointer;
+}
+.send-box{
+    margin-top: 50px;
+}
+.send-button{
+    border: none;
+    cursor: pointer;
+    color: blue;
+    background-color: transparent;
+}
+.resend-box{
+    margin: 30px auto;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+
+}

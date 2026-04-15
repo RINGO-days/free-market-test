@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +158,7 @@ return [
     ],
 
     'redirects' => [
-    'logout' => '/register',
+    'logout' => '/login',
 ],
 
 ];

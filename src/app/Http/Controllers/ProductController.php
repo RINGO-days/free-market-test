@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
 
+
 class ProductController extends Controller
 {
     public function index(Request $request)
@@ -67,11 +68,5 @@ class ProductController extends Controller
             'comment' => $request->comment
         ]);
         return back();
-    }
-
-    public function buy($id)
-    {
-        $product = Product::find($id);
-        return view('products.buy',compact('product'));
     }
 }

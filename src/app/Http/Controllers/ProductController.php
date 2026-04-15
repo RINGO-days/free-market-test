@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
 
+
 class ProductController extends Controller
 {
     public function index(Request $request)
@@ -57,11 +58,6 @@ class ProductController extends Controller
             $product->increment('number_of_like');
         }
         return back();
-    }
-
-    public function buy($id)
-    {
-        return view('products.buy');
     }
 
     public function addComment(CommentRequest $request,$id)

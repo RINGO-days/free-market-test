@@ -6,6 +6,7 @@
     <title>フリマアプリ</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @yield('css')
 </head>
 <body>
@@ -32,7 +33,7 @@
                             <button class="logout-button">ログアウト</button>
                         </form>
                     </li>
-                    <li><a class="mypage"href="">マイページ</a></li>
+                    <li><a class="mypage"href="/myList">マイページ</a></li>
                     <li><a class="sell" href="">出品</a></li>
                 </ul>
             </nav>

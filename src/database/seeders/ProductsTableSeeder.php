@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -24,7 +25,7 @@ class ProductsTableSeeder extends Seeder
             'name' => 'example_user',
             'email' => 'example@example.com',
             'image' => '/img/テストユーザープロフィール画像.png',
-            'password' => 'exampleexamle'
+            'password' => Hash::make('exampleexamle')
         ]);
 
         $test_user = User::first();

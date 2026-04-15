@@ -11,6 +11,7 @@
 }
 .product-image{
     width: 100%;
+    margin-top: 50px;
 }
 
 /* 商品タイトル、ブランド、価格 */
@@ -117,9 +118,11 @@
 .user-comment__user-info{
     font-size: 20px;
 }
-.user-image{
-    width: 150px;
-    margin-left: -40px;
+.user-image {
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 .user-comment{
     background-color: #d3d3d3;

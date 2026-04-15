@@ -50,4 +50,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Product::class);
     }
+
+    public function getProfileImageAttribute()
+    {
+        if($this->image){
+            return asset('storage/' . $this->image);
+        }
+
+        return asset("/img/default-image.png");
+    }
 }

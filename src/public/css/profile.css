@@ -1,12 +1,17 @@
-/* タイトル */
 .profile-ttl{
     margin: 80px auto;
     text-align: center;
 }
 
-/* 入力画面 */
 .profile-img__box{
     text-align: center;
+}
+.profile-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
 }
 .profile-form__box {
     margin: 0 auto;

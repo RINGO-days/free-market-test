@@ -20,11 +20,11 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('brand')->nullable();
             $table->integer('price');
-            $table->unsignedBigInteger('number_of_like');
-            $table->unsignedBigInteger('number_of_comment');
+            $table->unsignedBigInteger('number_of_like')->default(0);
+            $table->unsignedBigInteger('number_of_comment')->default(0);
             $table->text('description')->nullable();
             $table->unsignedBigInteger('condition_id');
-            $table->unsignedBigInteger('status');
+            $table->unsignedBigInteger('status')->default(1);
             $table->timestamps();
         });
     }

@@ -1,0 +1,111 @@
+
+.sell__box{
+    width: 50%;
+    margin: 50px auto;
+}
+.main-ttl__box{
+    text-align: center;
+}
+.ttl-box{
+    display: flex;
+    justify-content: space-between;
+}
+.content-ttl__box{
+    text-align: left;
+}
+.image__box{
+    border: #d3d3d3 1px solid;
+    border-radius: 3px;
+    padding: 30px 0;
+    text-align: center;
+}
+.image__input::file-selector-button {
+    border: #ff4500 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ff4500;
+    background-color: transparent;
+}
+.section-ttl{
+    border-bottom: #d3d3d3 1px solid;
+    padding-bottom: 5px;
+    margin-top: 50px;
+}
+.category__box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px auto;
+}
+.category__checkbox{
+    display: none;
+}
+.category-button{
+    color: #ff4500;
+    border-radius: 20px;
+    border: #ff4500 1px solid;
+    padding: 5px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.category__checkbox:checked + .category-button{
+    color: white;
+    background-color: #ff4500;
+}
+.condition__box{
+    position: relative;
+}
+.condition__select{
+    width: 100%;
+    height: 30px;
+    appearance: none;
+    padding-left: 30px;
+}
+.select-icon{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    pointer-events: none;
+}
+.content__box{
+    margin-top: 30px;
+    position: relative;
+}
+.content__input{
+    width: 100%;
+}
+.content__input-price{
+    width: 100%;
+    padding-left: 30px;
+}
+
+.textarea__box{
+    margin-top: 30px;
+}
+.content__textarea{
+    width: 100%;
+}
+.jpy-icon{
+    position: absolute;
+    top: 53%;
+    left: 10px;
+    pointer-events: none;
+}
+.sell-button{
+    width: 100%;
+    color: white;
+    background-color: #ff4500;
+    margin: 60px auto;
+    border: none;
+    padding: 10px 0;
+}
+.error-box{
+    margin-right: 20px;
+}
+.error-message{
+    color: red;
+    background: linear-gradient(transparent 60%,#ffc1c1 40%);
+    display: inline-block;
+    margin: 0 auto;
+}
+

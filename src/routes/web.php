@@ -11,6 +11,8 @@ Route::get('show/{id}',[ProductController::class,'show']);
 Route::get('search',[ProductController::class,'search']);
 Route::post('like/{id}',[ProductController::class,'addLike']);
 Route::post('comment/{id}',[ProductController::class,'addComment']);
+Route::get('sell',[ProductController::class,'sell']);
+Route::post('listing',[ProductController::class,'listing']);
 
 Route::get('/purchase/newAddress/{id}', [PurchaseController::class, 'newAddress']);
 Route::post('/purchase/sessionAddress/{id}', [PurchaseController::class, 'sessionAddress']);

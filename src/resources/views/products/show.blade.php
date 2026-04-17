@@ -7,7 +7,7 @@
 @section('main')
 <div class="product-show__box">
     <aside class="product-image__sidebar">
-        <img class="product-image" src="{{$product->image}}" alt="">
+        <img class="product-image" src="{{asset('storage/' . $product->image)}}" alt="">
     </aside>
     <div class="product-show__content">
         <h1 class="product-ttl">{{$product->name}}</h1>

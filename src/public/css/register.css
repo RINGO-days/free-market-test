@@ -1,4 +1,7 @@
 /* タイトル */
+.register-form{
+    margin-bottom: 50px;
+}
 .register-ttl{
     margin: 80px auto;
     text-align: center;

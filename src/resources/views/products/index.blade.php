@@ -15,7 +15,7 @@
     @foreach($products as $product)
         <div class="product-card">
             <a class="product-card-link" href="/show/{{$product->id}}" id="card">
-                <img class="product-card__image" src="{{$product->image}}" alt="商品画像">
+                <img class="product-card__image" src="{{asset('storage/' . $product->image)}}" alt="商品画像">
                 <span>{{$product->name}}</span>
                 @if($product->status === 2)
                     <span class="sold-icon">sold</span>

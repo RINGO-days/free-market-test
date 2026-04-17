@@ -48,7 +48,7 @@ class ProfileController extends Controller
             $products = Order::with('product')->get();
         }
 
-        $user = User::find(auth()->id());
+        $user = auth()->user();
         return view('profile.myList',compact('user','products'));
     }
 

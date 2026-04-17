@@ -45,7 +45,7 @@
         </div>
     </form>
     <div class="login-box">
-        <a class="login" href="">ログインはこちら</a>
+        <a class="login" href="/login">ログインはこちら</a>
     </div>
 </div>
 @endsection

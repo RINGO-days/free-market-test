@@ -34,7 +34,7 @@
                         </form>
                     </li>
                     <li><a class="mypage"href="/myList">マイページ</a></li>
-                    <li><a class="sell" href="">出品</a></li>
+                    <li><a class="sell" href="/sell">出品</a></li>
                 </ul>
             </nav>
             @endif

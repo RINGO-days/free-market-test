@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -30,10 +31,13 @@ class ProductsTableSeeder extends Seeder
 
         $test_user = User::first();
 
+        $path = public_path('img/腕時計.jpg');
+        $dummyImage = 'products/腕時計.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '腕時計',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+            'image' => $dummyImage,
             'brand' => 'Rolax',
             'price' => '15000',
             'number_of_like' => 0,
@@ -44,10 +48,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([1,5]);
 
+        $path = public_path('img/HDD.jpg');
+        $dummyImage = 'products/HDD.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'HDD',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+            'image' => $dummyImage,
             'brand' => '西芝',
             'price' => '5000',
             'number_of_like' => 0,
@@ -58,10 +65,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([2]);
 
+        $path = public_path('img/玉ねぎ.jpg');
+        $dummyImage = 'products/玉ねぎ.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '玉ねぎ３束',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+            'image' => $dummyImage,
             'brand' => 'なし',
             'price' => '300',
             'number_of_like' => 0,
@@ -72,10 +82,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([10]);
 
+        $path = public_path('img/靴.jpg');
+        $dummyImage = 'products/靴.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '革靴',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+            'image' => $dummyImage,
             'price' => '4000',
             'number_of_like' => 0,
             'number_of_comment' => 0,
@@ -85,10 +98,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([1,5]);
 
+        $path = public_path('img/ノートPC.jpg');
+        $dummyImage = 'products/ノートPC.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'ノートPC',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+            'image' => $dummyImage,
             'price' => '45000',
             'number_of_like' => 0,
             'number_of_comment' => 0,
@@ -98,10 +114,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([2]);
 
+        $path = public_path('img/マイク.jpg');
+        $dummyImage = 'products/マイク.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'マイク',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+            'image' => $dummyImage,
             'brand' => 'なし',
             'price' => '5000',
             'number_of_like' => 0,
@@ -110,11 +129,15 @@ class ProductsTableSeeder extends Seeder
             'condition_id' => 2,
             'status' => 1
         ]);
+        $product->categories()->attach([2]);
+
+        $path = public_path('img/ショルダーバック.jpg');
+        $dummyImage = 'products/ショルダーバック.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
-            
             'user_id' => $test_user->id,
             'name' => 'ショルダーバック',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+            'image' => $dummyImage,
             'price' => '3500',
             'number_of_like' => 0,
             'number_of_comment' => 0,
@@ -124,10 +147,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([1,4]);
 
+        $path = public_path('img/タンブラー.jpg');
+        $dummyImage = 'products/タンブラー.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'タンブラー',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+            'image' => $dummyImage,
             'brand' => 'なし',
             'price' => '500',
             'number_of_like' => 0,
@@ -138,10 +164,12 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([10]);
 
-        $product = Product::create([
+        $path = public_path('img/コーヒーミル.jpg');
+        $dummyImage = 'products/コーヒーミル.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));$product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'コーヒーミル',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+            'image' => $dummyImage,
             'brand' => 'Starbacks',
             'price' => '4000',
             'number_of_like' => 0,
@@ -152,10 +180,12 @@ class ProductsTableSeeder extends Seeder
         ]);
         $product->categories()->attach([10]);
 
-        $product = Product::create([
+        $path = public_path('img/メイクセット.jpg');
+        $dummyImage = 'products/メイクセット.jpg';
+        File::copy($path,storage_path('app/public/' . $dummyImage));$product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'メイクセット',
-            'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+            'image' => $dummyImage,
             'price' => '2500',
             'number_of_like' => 0,
             'number_of_comment' => 0,

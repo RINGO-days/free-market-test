@@ -57,6 +57,6 @@ class User extends Authenticatable implements MustVerifyEmail
             return asset('storage/' . $this->image);
         }
 
-        return asset("/img/default-image.png");
+        return asset('img/default-image.png');
     }
 }

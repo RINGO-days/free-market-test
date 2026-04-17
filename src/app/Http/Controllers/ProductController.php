@@ -7,7 +7,10 @@ use App\Models\Product;
 use App\Models\Like;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Condition;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ExhibitionRequest;
 
 
 class ProductController extends Controller
@@ -68,5 +71,24 @@ class ProductController extends Controller
             'comment' => $request->comment
         ]);
         return back();
+    }
+
+    public function sell()
+    {
+        $categories = Category::all();
+        $conditions = Condition::all();
+        return view('products.sell',compact('categories','conditions'));
+    }
+
+    public function listing(ExhibitionRequest $request)
+    {
+        $path = $request->file('image')->store('products','public');
+        $item = $request->all();
+        $item['image'] = $path;
+        $item['user_id'] = auth()->id();
+        $product = Product::create($item);
+        $product->categories()->sync($request->category);
+
+        return redirect('/');
     }
 }

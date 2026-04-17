@@ -9,7 +9,7 @@
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">
             <div class="ttl__box">
-                <img class="info__image" src="{{$product->image}}" alt="購入商品画像">
+                <img class="info__image" src="{{asset('storage/' . $product->image)}}" alt="購入商品画像">
                 <div class="ttl-price__box">
                     <h2>商品名</h2>
                     <span>¥ {{number_format($product->price)}}</span>

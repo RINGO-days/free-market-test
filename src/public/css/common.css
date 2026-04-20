@@ -74,4 +74,9 @@
     background: linear-gradient(transparent 60%, #ffc1c1 40%);
     display: inline-block;
 }
+.empty-message{
+    color: red;
+    font-size: 20px;
+    margin: 0 auto;
+}
 

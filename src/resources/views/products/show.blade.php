@@ -15,7 +15,7 @@
         <p class="product-price">{{$product->format_price}}</p>
         <div class="product-number__box">
             <div class="product-number_of_like__box">
-                <form action="/like/{{$product->id}}" method="post">
+                <form action="/product/like/{{$product->id}}" method="post">
                     @csrf
                     <button class="product-number_of_like__image-button">
                         @if($product->likeBy(auth()->user()))
@@ -57,7 +57,7 @@
             @foreach($product->comments as $comment)
                 <div class="user-comment__box">
                     <div class="user-comment__user-info">
-                        <img  class="user-image" src="{{asset('storage/' .$comment->user->image )}}" alt="プロフィール画像">
+                        <img  class="user-image" src="{{$comment->user->profile_image}}" alt="プロフィール画像">
                         <span>{{$comment->user->name}}</span>
                     </div>
                     <div class="user-comment">
@@ -69,14 +69,14 @@
             <p>こちらの商品へのコメントはありません</p>
         @endif
         <h2>商品へのコメント</h2>
-        <form action="/comment/{{$product->id}}" method="post">
+        <form action="/product/comment/{{$product->id}}" method="post">
             @csrf
             <div class="product-comment__box">
                 <textarea class="comment-textarea" name="comment" rows="5"></textarea>
             </div>
             <div class="error-box" style="color: red;">
                 @error('comment')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
             <div class="product-comment__submit">

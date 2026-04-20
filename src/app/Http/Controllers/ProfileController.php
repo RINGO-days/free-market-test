@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 use App\Models\Order;
 use App\Http\Requests\ProfileRequest;
 
@@ -35,17 +36,13 @@ class ProfileController extends Controller
 
     public function myList(Request $request)
     {
-        if($request->query('tab') === "ListedItem")
+        if($request->query('page') === "buy")
         {
-
-        }
-        elseif($request->query('tab') === "PurchasedItem")
-        {
-            $products = Order::with('product')->where('user_id',auth()->id())->get();
+            $products = Order::with('product')->where('user_id',auth()->id())->get()->pluck('product');
         }
         else
         {
-            $products = Order::with('product')->get();
+            $products = Product::where('user_id',auth()->id())->get();
         }
 
         $user = auth()->user();
@@ -62,8 +59,10 @@ class ProfileController extends Controller
     {
         $user = User::find(auth()->id());
         $updateItem = $request->all();
-        $path = $request->file('image')->store('profiles', 'public');
-        $updateItem['image'] = $path;
+        if($request->image){
+            $path = $request->image->store('profiles', 'public');
+            $updateItem['image'] = $path;
+        }
         $user->update($updateItem);
         return redirect('/myList');
     }

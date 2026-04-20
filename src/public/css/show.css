@@ -123,6 +123,7 @@
     height: 50px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    border: #d3d3d3 1px solid;
 }
 .user-comment{
     background-color: #d3d3d3;

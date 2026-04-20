@@ -18,8 +18,8 @@
         </div>
         <div class="header-search">
             @if($nav ?? true)
-            <form action="/search" method="get">
-                <input class="header-search__input"type="text" name="keyword" placeholder="何をお探しですか？">
+            <form action="/" method="get">
+                <input class="header-search__input"type="text" name="keyword" placeholder="何をお探しですか？" value="{{request('keyword')}}">
             </form>
             @endif
         </div>
@@ -34,7 +34,7 @@
                         </form>
                     </li>
                     <li><a class="mypage"href="/myList">マイページ</a></li>
-                    <li><a class="sell" href="/sell">出品</a></li>
+                    <li><a class="sell" href="/product/sell">出品</a></li>
                 </ul>
             </nav>
             @endif

@@ -17,45 +17,39 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->query('tab') === "recommend")
-        {
-            $products = Product::all();
-        }
-        elseif($request->query('tab') === "myList")
-        {
+        $query = Product::KeywordSearch($request->keyword);
+
+        if($request->query('tab') === "myList"){
             $likes = Like::where('user_id',auth()->id())->pluck('product_id');
-            $products = Product::whereIn('id',$likes)->get();
+            $query->whereIn('id',$likes);
         }
-        else
-        {
-            $products = Product::all();
+        else{
+            $myProducts = Product::where('user_id',auth()->id())->pluck('id');
+            $query->whereNotIn('id',$myProducts);
         }
+
+        $products = $query->get();
+
         return view('products.index',compact('products'));
     }
 
-    public function search(Request $request)
+    public function show($item_id)
     {
-        $products = Product::KeywordSearch($request->keyword)->get();
-        return view('products.index' , compact('products'));
-    }
-
-    public function show($id)
-    {
-        $product = Product::with('categories','condition','user')->find($id);
+        $product = Product::with('categories','condition','user')->find($item_id);
         return view('products.show' , compact('product',));
     }
 
-    public function addLike($id)
+    public function addLike($item_id)
     {
-        $product = Product::find($id);
+        $product = Product::find($item_id);
 
-        $like = Like::where('product_id',$id)->where('user_id',auth()->id())->first();
+        $like = Like::where('product_id',$item_id)->where('user_id',auth()->id())->first();
         if($like){
             Like::destroy($like->id);
             $product->decrement('number_of_like');
         }else{
             Like::create([
-                'product_id' => $id,
+                'product_id' => $item_id,
                 'user_id' => auth()->id()
             ]);
             $product->increment('number_of_like');
@@ -63,13 +57,14 @@ class ProductController extends Controller
         return back();
     }
 
-    public function addComment(CommentRequest $request,$id)
+    public function addComment(CommentRequest $request,$item_id)
     {
         Comment::create([
             'user_id' => auth()->id(),
-            'product_id' => $id,
+            'product_id' => $item_id,
             'comment' => $request->comment
         ]);
+        $product = Product::find($item_id)->increment('number_of_comment');
         return back();
     }
 

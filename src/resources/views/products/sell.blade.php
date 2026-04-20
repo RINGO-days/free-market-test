@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<form action="/listing" method="post" enctype="multipart/form-data">
+<form action="/product/listing" method="post" enctype="multipart/form-data">
     @csrf
     <div class="sell__box">
         <div class="main-ttl__box">
@@ -20,7 +20,10 @@
             </div>
         </div>
         <div class="image__box">
-            <input class="image__input" type="file" name="image">
+            <label class="image__input-button" for="image__input">
+                <span class="image__input-button__text">ファイルを選択</span>
+                <input class="image__input" type="file" id="image__input" name="image">
+            </label>
         </div>
         <h2 class="section-ttl">商品の詳細</h2>
         <div class="ttl-box">

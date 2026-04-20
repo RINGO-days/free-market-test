@@ -10,12 +10,15 @@
     @csrf
     <div class="profile-img__box">
         <img class="profile-img" src="{{$user->profile_image}}" alt="現在のプロフィール画像">
-        <input type="file" name="image" value="{{asset('storage/' . $user->image)}}">
+        <label class="image__input-button" for="image__input">
+            <span class="image__input-button__text">画像を選択する</span>
+            <input class="image__input" type="file" name="image" id="image__input" value="{{asset('storage/' . $user->image)}}">
+        </label>
         <div class="error-box">
-                @error('image')
-                    {{$message}}
-                @enderror
-            </div>
+            @error('image')
+                <span class="error-message">{{$message}}</span>
+            @enderror
+        </div>
     </div>
     <div class="profile">
         <div class="profile-form__box">
@@ -23,7 +26,7 @@
             <input class="profile-form__input" type="text" name="name" value="{{old('name',$user->name)}}">
             <div class="error-box">
                 @error('name')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>
@@ -32,7 +35,7 @@
             <input class="profile-form__input" type="text" name="post_code" value="{{old('post_code',$user->post_code)}}">
             <div class="error-box">
                 @error('post_code')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>
@@ -41,7 +44,7 @@
             <input class="profile-form__input" type="text" name="address" value="{{old('address',$user->address)}}">
             <div class="error-box">
                 @error('address')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>

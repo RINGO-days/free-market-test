@@ -19,12 +19,27 @@
     padding: 30px 0;
     text-align: center;
 }
-.image__input::file-selector-button {
+.image__input {
+    display: none;
+}
+
+.image__input-button {
+    display: inline-block;
     border: #ff4500 1px solid;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 25px;
     color: #ff4500;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.image__input-button__text {
+    pointer-events: none;
+}
+
+.image__input-button:hover {
+    background-color: #ff4500;
+    color: white;
 }
 .section-ttl{
     border-bottom: #d3d3d3 1px solid;
@@ -60,6 +75,10 @@
     height: 30px;
     appearance: none;
     padding-left: 30px;
+    border: black 1px solid;
+}
+.condition__select:hover{
+    background-color: rgb(0, 0, 0, 0.1);
 }
 .select-icon{
     position: absolute;
@@ -73,10 +92,18 @@
 }
 .content__input{
     width: 100%;
+    border: black 1px solid;
+}
+.content__input:hover{
+    background-color: rgb(0, 0, 0,0.1);
 }
 .content__input-price{
     width: 100%;
     padding-left: 30px;
+    border: black 1px solid;
+}
+.content__input-price:hover{
+    background-color: rgb(0, 0, 0, 0.1);
 }
 
 .textarea__box{
@@ -84,6 +111,10 @@
 }
 .content__textarea{
     width: 100%;
+    border: black 1px solid;
+}
+.content__textarea:hover{
+    background-color: rgb(0, 0, 0, 0.1);
 }
 .jpy-icon{
     position: absolute;
@@ -98,14 +129,7 @@
     margin: 60px auto;
     border: none;
     padding: 10px 0;
+    cursor: pointer;
 }
-.error-box{
-    margin-right: 20px;
-}
-.error-message{
-    color: red;
-    background: linear-gradient(transparent 60%,#ffc1c1 40%);
-    display: inline-block;
-    margin: 0 auto;
-}
+
 

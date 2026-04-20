@@ -14,7 +14,7 @@
             <input class="login-form__input" type="email" name="email" value="{{old('email')}}">
             <div class="error-box">
                 @error('email')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>
@@ -23,7 +23,7 @@
             <input class="login-form__input" type="password" name="password">
             <div class="error-box">
                 @error('password')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>

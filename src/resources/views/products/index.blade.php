@@ -27,5 +27,10 @@
             </a>
         </div>
     @endforeach
+    @if(count($products) == 0)
+        <div class="empty-message">
+            <p>該当の商品はありませんでした</p>
+        </div>
+    @endif
 </div>
 @endsection

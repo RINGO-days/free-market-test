@@ -29,5 +29,14 @@
             <span>{{$product->name}}</span>
         </div>
     @endforeach
+    @if($products->isEmpty())
+        <div class="empty-message">
+            @if(request('page') !== 'buy')
+                <p>出品した商品はありません</p>
+            @else
+                <p>購入した商品はありません</p>
+            @endif
+        </div>
+    @endif
 </div>
 @endsection

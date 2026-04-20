@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<form action="/checkout/{{$product->id}}" method="post">
+<form action="/purchase/checkout/{{$product->id}}" method="post">
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">
             <div class="ttl__box">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="error-box">
                     @error('payment')
-                        {{$message}}
+                        <span class="error-message">{{$message}}</span>
                     @enderror
                 </div>
             </div>
@@ -37,10 +37,10 @@
                     <a class="address-change__link" href="/purchase/newAddress/{{$product->id}}">変更する</a>
                 </div>
                 <p>〒{{session('post_code') ?? $user->post_code}}</p>
-                <p>{{session('address') ?? $user->address}}<br>{{session('building') ?? $user->building}}</p>
+                <p>{{session('address') ?? $user->address}}<br>{{session()->exists('building') ? session('building') : $user->building}}</p>
                 <input type="hidden" name="post_code" value="{{session('post_code') ?? $user->post_code}}">
                 <input type="hidden" name="address" value="{{session('address') ?? $user->address}}">
-                <input type="hidden" name="building" value="{{session('building') ?? $user->building}}">
+                <input type="hidden" name="building" value="{{session()->exists('building') ? session('building') : $user->building}}">
             </div>
         </div>
         <div class="confirm-box">

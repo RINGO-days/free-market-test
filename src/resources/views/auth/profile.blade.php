@@ -9,10 +9,13 @@
 <form action="/profile/create" enctype="multipart/form-data" method="post">
     @csrf
     <div class="profile-img__box">
-        <input type="file" name="image">
+        <label class="image__input-button" for="image__input">
+            <span class="image__input-button__text">画像を選択</span>
+            <input class="image__input" id="image__input" type="file" name="image">
+        </label>
         <div class="error-box">
                 @error('image')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
     </div>
@@ -22,7 +25,7 @@
             <input class="profile-form__input" type="text" name="name" value="{{old('name')}}">
             <div class="error-box">
                 @error('name')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>
@@ -31,7 +34,7 @@
             <input class="profile-form__input" type="text" name="post_code" value="{{old('post_code')}}">
             <div class="error-box">
                 @error('post_code')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>
@@ -40,7 +43,7 @@
             <input class="profile-form__input" type="text" name="address" value="{{old('address')}}">
             <div class="error-box">
                 @error('address')
-                    {{$message}}
+                    <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
         </div>

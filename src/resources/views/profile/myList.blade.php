@@ -14,15 +14,19 @@
 </div>
 <div class="tab-box">
     <div class="tab-box__inner">
-        <a class="tab-rink" href="/my/List/?tab=ListedItem">出品した商品</a>
-        <a class="tab-rink" href="/myList/?tab=PurchasedItem">購入した商品</a>
+        <a class="tab-link {{request('page') !== 'buy' ? 'active' : ''}}" href="/myList/?page=sell">
+            <span class="link-text {{request('page') !== 'buy' ? 'active' : ''}}">出品した商品</span>
+        </a>
+        <a class="tab-link {{request('page') === 'buy' ? 'active' : ''}}" href="/myList/?page=buy">
+            <span class="link-text {{request('page') === 'buy' ? 'active' : ''}}">購入した商品</span>
+        </a>
     </div>
 </div>
 <div class="product-box">
     @foreach($products as $product)
         <div class="product-card">
-            <img class="product-card__image" src="{{$product->product->image}}" alt="商品画像">
-            <span>{{$product->product->name}}</span>
+            <img class="product-card__image" src="{{asset('storage/' .$product->image )}}" alt="商品画像">
+            <span>{{$product->name}}</span>
         </div>
     @endforeach
 </div>

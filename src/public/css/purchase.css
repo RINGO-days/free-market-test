@@ -33,6 +33,11 @@
     width: 100%;
     appearance: none;
     padding: 8px 30px 8px 10px;
+    outline: none;
+    cursor: pointer;
+}
+.payment-select:hover{
+    background-color: #d3d3d3;
 }
 .select-icon{
     position: absolute;
@@ -55,17 +60,22 @@
 .address-change__link{
     text-decoration: none;
 }
+.address-change__link:hover{
+    text-decoration: underline;
+}
 .confirm-box{
     width: 35%;
 }
 .confirm__table{
     width: 100%;
+    text-align: center;
 }
 .confirm-item__row{
     border: black 1px solid;
 }
 .confirm-item{
     padding: 50px 0;
+    width: 50%;
 }
 .buy-button{
     margin-top: 30px;
@@ -75,9 +85,4 @@
     padding: 10px 0;
     border: none;
     cursor: pointer;
-}
-.error-box{
-    color: red;
-    margin-top: 10px;
-    margin-left: 50px;
 }

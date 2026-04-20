@@ -30,7 +30,7 @@ class ExhibitionRequest extends FormRequest
             'name' => 'required',
             'brand' => 'nullable',
             'description' => 'required|max:225',
-            'price' => 'required|integer|min:1'
+            'price' => 'required|integer|min:300|max:299999'
         ];
     }
 
@@ -46,7 +46,8 @@ class ExhibitionRequest extends FormRequest
             'description.max' => '商品の説明は最大225文字以内で記載してください',
             'price.required' => '商品の価格を入力してください',
             'price.integer' => '商品の価格は整数で入力してください',
-            'price.min' => '商品の価格は1円以上を入力してください'
+            'price.min' => '商品の価格は300円以上を入力してください',
+            'price.max' => '商品の価格は30万円未満で入力してください'
         ];
     }
 }

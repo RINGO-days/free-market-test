@@ -1,29 +1,53 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/',[ProductController::class,'index'])->middleware(['auth', 'verified']);
-Route::get('show/{id}',[ProductController::class,'show']);
-Route::get('search',[ProductController::class,'search']);
-Route::post('like/{id}',[ProductController::class,'addLike']);
-Route::post('comment/{id}',[ProductController::class,'addComment']);
-Route::get('sell',[ProductController::class,'sell']);
-Route::post('listing',[ProductController::class,'listing']);
+Route::middleware('auth')->group(function(){
+    Route::get('/profile',[ProfileController::class,'profile']);
+    Route::post('/profile/create/',[ProfileController::class,'profileCreate']);
+    Route::get('show/{item_id}',[ProductController::class,'show']);
+});
 
-Route::get('/purchase/newAddress/{id}', [PurchaseController::class, 'newAddress']);
-Route::post('/purchase/sessionAddress/{id}', [PurchaseController::class, 'sessionAddress']);
-Route::get('purchase/{id}',[PurchaseController::class,'purchase']);
-Route::post('checkout/{id}',[PurchaseController::class,'checkout']);
-Route::post('/purchase/cancel/{id}',[PurchaseController::class,'checkout']);
-Route::get('/purchase/success/{id}', [PurchaseController::class, 'success']);
+Route::middleware('auth','verified')->group(function(){
+    Route::get('/',[ProductController::class,'index']);
+
+    Route::prefix('product')->group(function(){
+        Route::post('like/{item_id}',[ProductController::class,'addLike']);
+        Route::post('comment/{item_id}',[ProductController::class,'addComment']);
+        Route::get('sell',[ProductController::class,'sell']);
+        Route::post('listing',[ProductController::class,'listing']);
+    });
+
+    Route::prefix('purchase')->group(function(){
+        Route::get('{item_id}',[PurchaseController::class,'purchase']);
+        Route::get('newAddress/{item_id}', [PurchaseController::class, 'newAddress']); //住所変更ページビュー
+        Route::post('sessionAddress/{item_id}', [PurchaseController::class, 'sessionAddress']); //住所変更を保持するアクション
+        Route::post('checkout/{item_id}',[PurchaseController::class,'checkout']);
+        Route::post('cancel/{item_id}',[PurchaseController::class,'checkout']);
+        Route::get('success/{item_id}', [PurchaseController::class, 'success']);
+    });
+
+    Route::prefix('myList')->group(function(){
+        Route::get('/',[ProfileController::class,'myList']);
+        Route::get('editProfile',[ProfileController::class,'editProfile']); //プロフィール編集ページビュー
+        Route::post('updateProfile',[ProfileController::class,'updateProfile']); //プロフィール編集アクション
+    });
+});
 
 
-Route::get('/myList',[ProfileController::class,'myList']);
-Route::get('/myList/editProfile',[ProfileController::class,'editProfile']);
-Route::post('/myList/updateProfile',[ProfileController::class,'updateProfile']);
-Route::get('/profile',[ProfileController::class,'profile']);
-Route::post('/profile/create/',[ProfileController::class,'profileCreate']);
+
+
+
+
+
+
+
+
+
+
+
+
+

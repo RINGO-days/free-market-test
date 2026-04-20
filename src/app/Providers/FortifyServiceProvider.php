@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Http\Responses\RegisterResponse;
-use Laravel\Fortify\Http\Responses\VerifyEmailResponse;
+use Laravel\Fortify\Contracts\VerifyEmailResponse;
+use Laravel\Fortify\Contracts\RegisterResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -50,7 +50,14 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        $this->app->instance(VerifyEmailResponse::class, new class extends VerifyEmailResponse {
+        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        public function toResponse($request)
+        {
+            return redirect('/email/verify');
+        }
+    });
+
+        $this->app->instance(VerifyEmailResponse::class, new class implements VerifyEmailResponse {
         public function toResponse($request)
         {
             return redirect('/profile');

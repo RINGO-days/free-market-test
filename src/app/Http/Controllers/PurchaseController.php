@@ -13,38 +13,38 @@ use App\Http\Requests\AddressRequest;
 
 class PurchaseController extends Controller
 {
-    public function purchase($id)
+    public function purchase($item_id)
     {
         $preUrl = url()->previous();
         if(!str_contains($preUrl,'newAddress')){
             session()->forget(['post_code', 'address', 'building']);
         }
 
-        $product = Product::find($id);
+        $product = Product::find($item_id);
         $user = auth()->user();
         return view('purchases.purchase',compact('product','user'));
     }
 
-    public function newAddress($id)
+    public function newAddress($item_id)
     {
-        $product = Product::find($id);
+        $product = Product::find($item_id);
 
         return view('purchases.address',compact('product'));
     }
 
-    public function sessionAddress(AddressRequest $request,$id)
+    public function sessionAddress(AddressRequest $request,$item_id)
     {
         session([
             'post_code' => $request->post_code,
             'address' => $request->address,
             'building' => $request->building
         ]);
-        return redirect("/purchase/{$id}");
+        return redirect("/purchase/{$item_id}");
     }
 
-    public function checkout(PurchaseRequest $request,$id)
+    public function checkout(PurchaseRequest $request,$item_id)
     {
-        $product = Product::find($id);
+        $product = Product::find($item_id);
         $paymentMethod = $request->payment;
 
         if($paymentMethod === 'カード支払い'){
@@ -81,9 +81,9 @@ class PurchaseController extends Controller
 
     }
 
-    public function success($id)
+    public function success($item_id)
     {
-        $product = Product::find($id);
+        $product = Product::find($item_id);
         if($product){
             $product->update([
                 'status' => 2

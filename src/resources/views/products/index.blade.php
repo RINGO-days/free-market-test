@@ -7,8 +7,12 @@
 @section('main')
 <div class="tab-box">
     <div class="tab-box__inner">
-        <a class="tab-rink" href="/?tab=recommend">おすすめ</a>
-        <a class="tab-rink" href="/?tab=myList">マイリスト</a>
+        <a class="tab-link {{request('tab') !== 'myList' ? 'active' : ''}}" href="/?keyword={{request('keyword')}}">
+            <span class="link-text {{request('tab') !== 'myList' ? 'active' : ''}}">おすすめ</span>
+        </a>
+        <a class="tab-link {{request('tab') === 'myList' ? 'active' : ''}}" href="/?tab=myList&keyword={{request('keyword')}}">
+            <span class="link-text {{request('tab') === 'myList' ? 'active' : ''}}">マイリスト</span>
+        </a>
     </div>
 </div>
 <div class="product-box">

@@ -31,34 +31,88 @@ docker-compose up -d --build
 
 </details>
 
-## 🛠環境構築
+## 🌲環境構築
 **Dockerを立ち上げた後は、以下の手順を順番に実行してください**
-1. phpコンテナへログイン
+### 1. phpコンテナへログイン
 ```bash
 docker-compose exec php bash
 ```
-2. ライブラリのインストール
+### 2. ライブラリのインストール
 ```bash
 composer install
 ```
-3. 環境設定ファイルの作成
+### 3. 環境設定ファイルの作成
 ```bash
 cp .env.example .env
 ```
-4. .envファイルの設定
+### 4. .envファイルの設定（VScodeなどのエディタで編集）
 ```text
+# .envファイル内
+
+---DB設定---
 DB_CONNECTION=mysql
-DB_HOST=mysql　　※
+DB_HOST=mysql   ※変更
 DB_PORT=3306
-DB_DATABASE=laravel_db　　※
-DB_USERNAME=laravel_user　　※
-DB_PASSWORD=laravel_pass　　※
+DB_DATABASE=laravel_db  ※変更
+DB_USERNAME=laravel_user    ※変更
+DB_PASSWORD=laravel_pass    ※変更
+...
 ```
-5. アプリケーションキーの作成
+🔐**<a href="https://dashboard.stripe.com/test/apikeys">stripe APIキー</a>** ←こちらから公開可能キーならびにシークレットキーをコピペしてください
+```text
+---stripeのAPIキー設定---
+STRIPE_PUBLIC_KEY=pk_test_xxxxxxxx      ←
+STRIPE_SECRET_KEY=sk_test_xxxxxxxx      ←値を貼り付け
+```
+<details>
+<summary style=" cursor: pointer";>⚠️stripeアカウントをお持ちでない方はこちら</summary>
+
+>1. <a href="https://dashboard.stripe.com/register">Stripe公式サイト</a>で、アカウント（無料）を作成
+>2. ダッシュボードの「開発者」＞「APIキー」から、テストモードの「公開可能キー」と「シークレットキー」を取得します。
+>3. .env ファイルの以下の項目に値を貼り付けてください。
+>```text
+>STRIPE_KEY=pk_test_...
+>STRIPE_SECRET=sk_test_...
+>```
+
+</details>
+
+### 5. アプリケーションキーの作成
 ```bash
 php artisan key:generate
 ```
-6. データベースおよび初期データの投入
+### 6. データベースおよび初期データの投入
 ```bash
 php artisan migrate --seed
 ```
+### 7. 商品画像用のストレージの公開
+```bash
+php artisan storage:link
+```
+## 🛋テスト環境
+- 初期データの中に、テスト用のダミー商品が10個あり
+- stripeのサンドボックスでカード支払いのテスト決済を行う場合
+
+| 項目 | 入力内容 |
+| :--- | :--- |
+| **カード番号** | `4242 4242 4242 4242` |
+| **有効期限** | 未来の日付（例：`01/30`） |
+| **CVC** | 任意の3桁（例：`123`） |
+| **郵便番号** | 任意の数字（例：`000-0000`） |
+| **カード名義** | 任意の文字（例：`Test Test`）
+
+## 🛠使用技術
+- Laravel 8.83.29
+- PHP 8.1.34
+- mysql 8.0.26
+- nginx 1.21.1
+- phpMyAdmin
+- MailHog
+- Fortify
+- stripe決済
+## 📍開発環境
+- http://localhost ホーム画面
+- http://localhost:8080 phpMyAdmin
+- http://localhost:8025 MailHog
+## 📃ER図
+![ER図](ER.svg)

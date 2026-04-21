@@ -5,6 +5,11 @@
 @endsection
 
 @section('main')
+@if(session('success'))
+    <div class="flash-message success">
+        {{session('success')}}
+    </div>
+@endif
 <h1 class="login-ttl">ログイン</h1>
 <div class="login">
     <form action="" method="post">

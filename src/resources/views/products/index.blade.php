@@ -5,6 +5,11 @@
 @endsection
 
 @section('main')
+@if(session('success'))
+    <div class="flash-message success">
+        {{session('success')}}
+    </div>
+@endif
 <div class="tab-box">
     <div class="tab-box__inner">
         <a class="tab-link {{request('tab') !== 'myList' ? 'active' : ''}}" href="/?keyword={{request('keyword')}}">

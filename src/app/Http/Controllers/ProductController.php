@@ -84,6 +84,6 @@ class ProductController extends Controller
         $product = Product::create($item);
         $product->categories()->sync($request->category);
 
-        return redirect('/');
+        return redirect('/')->with('success','商品名: ' . $product->name . ' '. '出品をしました');
     }
 }

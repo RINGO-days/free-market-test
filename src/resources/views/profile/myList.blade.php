@@ -5,6 +5,11 @@
 @endsection
 
 @section('main')
+@if(session('success'))
+    <div class="flash-message success">
+        {{session('success')}}
+    </div>
+@endif
 <div class="user-info">
     <div class="image-box">
         <img class="image" src="{{$user->profile_image}}" alt="ユーザー画像">

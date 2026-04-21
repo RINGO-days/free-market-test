@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\VerifyEmailResponse;
 use Laravel\Fortify\Contracts\RegisterResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -61,6 +62,13 @@ class FortifyServiceProvider extends ServiceProvider
         public function toResponse($request)
         {
             return redirect('/profile');
+        }
+    });
+
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+        public function toResponse($request)
+        {
+            return redirect('/login')->with('success', 'ログアウトしました。');
         }
     });
     }

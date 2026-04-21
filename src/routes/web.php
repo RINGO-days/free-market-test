@@ -26,7 +26,7 @@ Route::middleware('auth','verified')->group(function(){
         Route::get('newAddress/{item_id}', [PurchaseController::class, 'newAddress']); //住所変更ページビュー
         Route::post('sessionAddress/{item_id}', [PurchaseController::class, 'sessionAddress']); //住所変更を保持するアクション
         Route::post('checkout/{item_id}',[PurchaseController::class,'checkout']);
-        Route::post('cancel/{item_id}',[PurchaseController::class,'checkout']);
+        Route::get('cancel/{item_id}',[PurchaseController::class,'cancel']);
         Route::get('success/{item_id}', [PurchaseController::class, 'success']);
     });
 
@@ -36,6 +36,8 @@ Route::middleware('auth','verified')->group(function(){
         Route::post('updateProfile',[ProfileController::class,'updateProfile']); //プロフィール編集アクション
     });
 });
+
+Route::post('/stripe/webhook', [PurchaseController::class, 'handleWebhook']);
 
 
 

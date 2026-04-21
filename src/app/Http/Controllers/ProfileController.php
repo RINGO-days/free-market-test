@@ -64,6 +64,6 @@ class ProfileController extends Controller
             $updateItem['image'] = $path;
         }
         $user->update($updateItem);
-        return redirect('/myList');
+        return redirect('/myList')->with('success','プロフィールを変更しました');
     }
 }

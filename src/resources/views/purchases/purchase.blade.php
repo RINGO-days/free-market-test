@@ -5,6 +5,16 @@
 @endsection
 
 @section('main')
+@if(session('cancel'))
+    <div class="flash-message cancel">
+        {{session('cancel')}}
+    </div>
+@endif
+@if(session('success'))
+<div class="flash-message success">
+        {{session('success')}}
+    </div>
+@endif
 <form action="/purchase/checkout/{{$product->id}}" method="post">
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">

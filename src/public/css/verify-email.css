@@ -13,6 +13,12 @@
     background-color: #d3d3d3;
     font-size: 20px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.verify-button:hover{
+    color: #ff7f50;
+    background-color: #c0c0c0;
 }
 .send-box{
     margin-top: 50px;
@@ -21,12 +27,9 @@
     border: none;
     cursor: pointer;
     color: blue;
+    font-size: 15px;
     background-color: transparent;
 }
-.resend-box{
-    margin: 30px auto;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-
+.send-button:hover{
+    text-decoration: underline;
 }

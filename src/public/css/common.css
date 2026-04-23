@@ -89,24 +89,27 @@
 
 .cancel {
     background-color: #e53e3e;
+    border: red 1px solid;
 }
 
 .success {
     background-color: #38a169;
+    border: #C8E6C9 1px solid;
 }
 
 @keyframes fadeout {
     0% {
-        opacity: 1;
+        opacity: 0;
     }
 
     20% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(50%);
     }
 
     80% {
         opacity: 1;
+        transform: translateY(50%);
     }
 
     100% {

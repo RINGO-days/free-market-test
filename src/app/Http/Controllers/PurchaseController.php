@@ -54,7 +54,6 @@ class PurchaseController extends Controller
                 $paymentTypes = ['konbini'];
             }
 
-
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         $session = Session::create([
             'payment_method_types' => $paymentTypes,
@@ -70,7 +69,14 @@ class PurchaseController extends Controller
             ]],
             'mode' => 'payment',
             'metadata' => [
-                'item_id' => $product->id],
+                'item_id' => $product->id,
+                'user_id' => auth()->id(),
+                'total' => $product->price,
+                'post_code' => $request->post_code,
+                'address' => $request->address,
+                'building' => $request->building,
+                'payment' => $paymentMethod
+                ],
             'success_url' => url("/purchase/success/{$product->id}"),
             'cancel_url'  => url("/purchase/cancel/{$product->id}"),
         ]);
@@ -101,14 +107,13 @@ class PurchaseController extends Controller
         Order::create([
             'user_id' => auth()->id(),
             'product_id' => $product->id,
-            'total' => $product->price,
             'post_code' => $post_code,
             'address' => $address,
             'building' => $building,
             'payment' => $paymentMethod
         ]);
 
-        session()->forget(['post_code', 'address', 'building']);
+        session()->forget(['post_code', 'address', 'building','payment']);
 
         return redirect('/');
     }
@@ -120,28 +125,36 @@ class PurchaseController extends Controller
 
     public function handleWebhook(Request $request)
     {
-    $event = $request->all();
+        $event = $request->all();
 
-    Log::info('Stripe Webhook届きました: ' . $event['type']);
+        Log::info('Stripe Webhook届きました: ' . $event['type']);
 
-    switch ($event['type']) {
-        case 'checkout.session.completed':
-            $session = $event['data']['object'];
-            $itemId = $session['metadata']['item_id'];
+        switch ($event['type']) {
+            case 'checkout.session.completed':
+                $session = $event['data']['object'];
+                $itemId = $session['metadata']['item_id'];
 
-            $product = Product::find($itemId);
+                $product = Product::find($itemId);
 
-            if ($product) {
-                $product->update([
-                    'status' => 2,
-                ]);
-                Log::info('商品ID' . $product->id .':'. $product->name .'を購入済みに更新しました');
-            } else {
-                Log::error('該当する注文が見つかりませんでした。SessionID: ' . $session[$itemId]);
-            }
-            break;
-    }
-
-    return response()->json(['status' => 'success'], 200);
+                if ($product) {
+                    $product->update([
+                        'status' => 2,
+                    ]);
+                    Order::create([
+                        'user_id' => $session['metadata']['user_id'],
+                        'product_id' => $product->id,
+                        'total' => $product->price,
+                        'post_code' => $session['metadata']['post_code'],
+                        'address' => $session['metadata']['address'],
+                        'building' => $session['metadata']['building'] ?? null,
+                        'payment' => $session['metadata']['payment'],
+                    ]);
+                    Log::info('商品ID' . $product->id .':'. $product->name .'を購入済みに更新しました');
+                } else {
+                    Log::error('該当する注文が見つかりませんでした。SessionID: ' . $session[$itemId]);
+                }
+                break;
+        }
+        return response()->json(['status' => 'success'], 200);
     }
 }

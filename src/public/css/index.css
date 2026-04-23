@@ -6,8 +6,9 @@
     font-size: 20px;
 }
 .tab-box__inner{
-    width: 50%;
+    width: 30%;
     display: flex;
+    margin-left: 30px;
     justify-content: space-around;
 }
 .tab-link{

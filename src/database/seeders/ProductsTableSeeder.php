@@ -22,12 +22,6 @@ class ProductsTableSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => 'testtest'
         ]);
-        User::create([
-            'name' => 'example_user',
-            'email' => 'example@example.com',
-            'image' => '/img/テストユーザープロフィール画像.png',
-            'password' => Hash::make('exampleexamle')
-        ]);
 
         $test_user = User::first();
 

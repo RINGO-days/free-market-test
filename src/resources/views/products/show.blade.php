@@ -18,11 +18,14 @@
                 <form action="/product/like/{{$product->id}}" method="post">
                     @csrf
                     <button class="product-number_of_like__image-button">
-                        @if($product->likeBy(auth()->user()))
-                        <img src="/img/ハートロゴ_ピンク.png" alt="お気に入り登録">
-                        @else
+                        @auth
+                            @if($product->likeBy(auth()->user()))
+                            <img src="/img/ハートロゴ_ピンク.png" alt="お気に入り登録">
+                            @else
+                            <img src="/img/ハートロゴ_デフォルト.png" alt="お気に入り解除">
+                            @endif
+                        @endauth
                         <img src="/img/ハートロゴ_デフォルト.png" alt="お気に入り解除">
-                        @endif
                     </button>
                     <span class="product-number_of_like__number">{{$product->number_of_like}}</span>
                 </form>

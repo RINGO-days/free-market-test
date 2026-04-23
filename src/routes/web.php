@@ -26,6 +26,7 @@ Route::middleware('auth','verified')->group(function(){
         Route::post('checkout/{item_id}',[PurchaseController::class,'checkout']);
         Route::get('cancel/{item_id}',[PurchaseController::class,'cancel']);
         Route::get('success/{item_id}', [PurchaseController::class, 'success']);
+        Route::get('payment/{item_id}', [PurchaseController::class, 'paymentUpdate']); //購入画面、支払い方法変更の更新アクション
     });
 
     Route::prefix('myList')->group(function(){

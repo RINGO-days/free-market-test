@@ -26,20 +26,18 @@
         </div>
         <div class="payment__box">
             <h3>支払い方法</h3>
-            <div class="payment-select__box">
-                <form action="/payment/update">
+            <form action="/purchase/payment/{{$product->id}}">
+                <div class="payment-select__box">
                     @csrf
-                    @method('patch')
                     <select class="payment-select" name="payment">
                         <option value="未選択" disabled selected>選択してください</option>
-                        <option value="コンビニ支払い">コンビニ支払い
-                            <input type="submit">
-                        </option>
+                        <option value="コンビニ支払い">コンビニ支払い</option>
                         <option value="カード支払い">カード支払い</option>
                     </select>
                     <span class="select-icon">▼</span>
-                </form>
-            </div>
+                </div>
+                <button type="submit">変更</button>
+            </form>
             <div class="error-box">
                 @error('payment')
                     <span class="error-message">{{$message}}</span>
@@ -53,9 +51,6 @@
             </div>
             <p>〒{{session('post_code') ?? $user->post_code}}</p>
             <p>{{session('address') ?? $user->address}}<br>{{session()->exists('building') ? session('building') : $user->building}}</p>
-            <input type="hidden" name="post_code" value="{{session('post_code') ?? $user->post_code}}">
-            <input type="hidden" name="address" value="{{session('address') ?? $user->address}}">
-            <input type="hidden" name="building" value="{{session()->exists('building') ? session('building') : $user->building}}">
         </div>
     </div>
     <div class="confirm-box">
@@ -66,18 +61,22 @@
             </tr>
             <tr class="confirm-item__row">
                 <th class="confirm-item">支払い方法</th>
-                <td class="confirm-item"></td>
+                <td class="confirm-item">{{session('payment')}}</td>
             </tr>
         </table>
         <form action="/purchase/checkout/{{$product->id}}" method="post">
             <div class="buy-button__box">
                 @csrf
                 <button class="buy-button">購入する</button>
+                <input type="hidden" name="payment" value="{{session('payment')}}">
+                <input type="hidden" name="post_code" value="{{session('post_code') ?? $user->post_code}}">
+                <input type="hidden" name="address" value="{{session('address') ?? $user->address}}">
+                <input type="hidden" name="building" value="{{session()->exists('building') ? session('building') : $user->building}}">
             </div>
         </form>
     </div>
 </div>
-<!-- ここからAlpine.jsを利用したブラウザのリロードを挟まない小計画面の変更のコードです。利用する場合は上記のformタグ内のコードを消す、もしくはコメントアウトする。 -->
+<!-- ここからAlpine.jsを利用したブラウザのリロードを挟まない小計画面の変更のコードです。利用する場合は上記のコードを消す、もしくはコメントアウトする。 -->
 <!-- <form action="/purchase/checkout/{{$product->id}}" method="post">
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">

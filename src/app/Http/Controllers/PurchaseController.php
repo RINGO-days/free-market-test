@@ -157,4 +157,10 @@ class PurchaseController extends Controller
         }
         return response()->json(['status' => 'success'], 200);
     }
+
+    public function paymentUpdate(Request $request,$item_id)
+    {
+        $payment = $request->payment;
+        return redirect("/purchase/{$item_id}")->with('payment',$payment);
+    }
 }

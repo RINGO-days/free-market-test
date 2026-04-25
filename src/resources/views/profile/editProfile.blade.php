@@ -32,12 +32,20 @@
         </div>
         <div class="profile-form__box">
             <p class="profile-form__ttl">郵便番号</p>
-            <input class="profile-form__input" type="text" name="post_code" value="{{old('post_code',$user->post_code)}}">
+            <div class="post-code__box__inner">
+                <input class="profile-form__input" type="text" name="post_code" value="{{old('post_code')}}">
+                <button class="address-search_button" formaction="/addressSearch">住所を検索</button>
+            </div>
             <div class="error-box">
                 @error('post_code')
                     <span class="error-message">{{$message}}</span>
                 @enderror
             </div>
+            @if(session('message'))
+                <div class="message-box">
+                    {{session('message')}}
+                </div>
+            @endif
         </div>
         <div class="profile-form__box">
             <p class="profile__ttl">住所</p>

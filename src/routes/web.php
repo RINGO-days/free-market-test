@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 Route::middleware('auth')->group(function(){
     Route::get('/profile',[ProfileController::class,'profile']);
     Route::post('/profile/create/',[ProfileController::class,'profileCreate']);
+    Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 });
 
 Route::middleware('auth','verified')->group(function(){

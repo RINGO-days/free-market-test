@@ -7,7 +7,8 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Http\Requests\ProfileRequest;
-
+use App\Http\Requests\AddressSearchRequest;
+use Illuminate\Support\Facades\Http;
 
 class ProfileController extends Controller
 {
@@ -65,5 +66,25 @@ class ProfileController extends Controller
         }
         $user->update($updateItem);
         return redirect('/myList')->with('success','プロフィールを変更しました');
+    }
+
+    public function addressSearch(AddressSearchRequest $request)
+    {
+        $post_code = $request->post_code;
+        $address = '';
+        $response = Http::get("https://zipcloud.ibsnet.co.jp/api/search",['zipcode' => $post_code]);
+        $result = $response->json()['results'];
+
+        if($result){
+        $address = $result[0]['address1'].$result[0]['address2'].$result[0]['address3'];
+        }else{
+            return back()->with('message','入力された郵便番号の住所はありませんでした。');
+        }
+        return back()->withInput([
+            'address' => $address,
+            'post_code' => $post_code,
+            'name' => $request->name,
+            'building' => $request->building,
+        ]);
     }
 }

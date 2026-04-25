@@ -116,3 +116,16 @@ php artisan storage:link
 - http://localhost:8025 MailHog
 ## 📃ER図
 ![ER図](ER.svg)
+# :beginner:その他追加機能
+## zipcloudを用いた郵便番号による住所自動入力機能
+### 概要
+**zipcloud APIを使用。「住所を検索」ボタンを押すことによって自動で住所の入力欄に住所を入れる機能を実装**
+### 内容
+- laravelの機能であるHTTPファサードを用いて、外部APIである`https://zipcloud.ibsnet.co.jp/api/search`にアクセスし、住所データをjson形式で取得。
+- javascriptを用いずに機能を作成するにあたって、どうしてもボタンを押すとブラウザのリロードが入るため、ユーザー体験（UX）としてはやや劣るか。
+### 作成したルート
+web.php
+```bash
+Route::post('addressSearch',[ProfileController::class,'addressSearch']);
+```
+

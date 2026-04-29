@@ -30,7 +30,11 @@
                     <li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="logout-button">ログアウト</button>
+                            @if(auth()->user())
+                                <button class="logout-button">ログアウト</button>
+                            @else
+                                <button class="logout-button">ログイン</button>
+                            @endif
                         </form>
                     </li>
                     <li><a class="mypage"href="/myList">マイページ</a></li>

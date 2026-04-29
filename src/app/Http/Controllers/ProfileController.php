@@ -7,31 +7,27 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Http\Requests\ProfileRequest;
-
+use App\Http\Requests\AddressSearchRequest;
+use Illuminate\Support\Facades\Http;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('auth.profile');
+        $user = auth()->user();
+        return view('auth.profile',compact('user'));
     }
 
     public function profileCreate(ProfileRequest $request)
     {
-        $profile = User::find(auth()->id());
-        $path = $request->image;
-        if($path){
-            $path = $path->store('profiles','public');
+        $user = User::find(auth()->id());
+        $updateItem = $request->all();
+        if($request->image){
+            $path = $request->image->store('profiles', 'public');
+            $updateItem['image'] = $path;
         }
-
-        $profile->update([
-            'image' => $path,
-            'name' => $request->name,
-            'post_code' => $request->post_code,
-            'address' => $request->address,
-            'building' => $request->building
-        ]);
-        return redirect('/');
+        $user->update($updateItem);
+        return redirect('/myList')->with('success','プロフィールを変更しました');
     }
 
     public function myList(Request $request)
@@ -49,21 +45,23 @@ class ProfileController extends Controller
         return view('profile.myList',compact('user','products'));
     }
 
-    public function editProfile()
+    public function addressSearch(AddressSearchRequest $request)
     {
-        $user = auth()->user();
-        return view('profile.editProfile',compact('user'));
-    }
+        $post_code = $request->post_code;
+        $address = '';
+        $response = Http::get("https://zipcloud.ibsnet.co.jp/api/search",['zipcode' => $post_code]);
+        $result = $response->json()['results'];
 
-    public function updateProfile(ProfileRequest $request)
-    {
-        $user = User::find(auth()->id());
-        $updateItem = $request->all();
-        if($request->image){
-            $path = $request->image->store('profiles', 'public');
-            $updateItem['image'] = $path;
+        if($result){
+        $address = $result[0]['address1'].$result[0]['address2'].$result[0]['address3'];
+        }else{
+            return back()->with('message','入力された郵便番号の住所はありませんでした。');
         }
-        $user->update($updateItem);
-        return redirect('/myList')->with('success','プロフィールを変更しました');
+        return back()->withInput([
+            'address' => $address,
+            'post_code' => $post_code,
+            'name' => $request->name,
+            'building' => $request->building,
+        ]);
     }
 }

@@ -45,12 +45,34 @@
 
 .profile-form__input {
     width: 100%;
+    padding: 10px 10px;
+    font-size: 30px;
+    border: black 1px solid;
+
+}
+.profile-form__input:hover{
+    background-color: rgb(0, 0, 0,0.1);
+}
+.profile-form__input-address{
+    width: 50%;
     height: 50px;
     font-size: 30px;
     border: black 1px solid;
 }
-.profile-form__input:hover{
-    background-color: rgb(0, 0, 0,0.1);
+.address-search_button{
+    width: 20%;
+    padding: 10px 0;
+    margin-left: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.post-code__box__inner{
+    display: flex;
+}
+.message-box{
+    color: red;
+    background: linear-gradient(transparent 60%, #ffc1c1 40%);
+    display: inline-block;
 }
 /* 送信ボタン */
 .profile-form__submit-box {

@@ -11,7 +11,7 @@
     <div class="profile-img__box">
         <label class="image__input-button" for="image__input">
             <span class="image__input-button__text">画像を選択</span>
-            <input class="image__input" id="image__input" type="file" name="image">
+            <input class="image__input" type="file" name="image">
         </label>
         <div class="error-box">
                 @error('image')
@@ -22,7 +22,7 @@
     <div class="profile">
         <div class="profile-form__box">
             <p class="profile-form__ttl">ユーザー名</p>
-            <input class="profile-form__input" type="text" name="name" value="{{old('name')}}">
+            <input class="profile-form__input" type="text" name="name" value="{{old('name',$user->name) }}">
             <div class="error-box">
                 @error('name')
                     <span class="error-message">{{$message}}</span>

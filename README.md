@@ -117,15 +117,18 @@ php artisan storage:link
 ## 📃ER図
 ![ER図](ER.svg)
 # :beginner:その他追加機能
-## zipcloudを用いた郵便番号による住所自動入力機能
-### 概要
-**zipcloud APIを使用。「住所を検索」ボタンを押すことによって自動で住所の入力欄に住所を入れる機能を実装**
-### 内容
+## :pushpin:zipcloudを用いた郵便番号による住所自動入力機能
+- **zipcloud APIを使用。「住所を検索」ボタンを押すことによって自動で住所の入力欄に住所を入れる機能を実装**
 - laravelの機能であるHTTPファサードを用いて、外部APIである`https://zipcloud.ibsnet.co.jp/api/search`にアクセスし、住所データをjson形式で取得。
-- javascriptを用いずに機能を作成するにあたって、どうしてもボタンを押すとブラウザのリロードが入るため、ユーザー体験（UX）としてはやや劣るか。
+- ボタンを押すとブラウザのリロードが入り、プロフィール画像を選択していた場合はリセットされてしまう。またリロードにより若干のタイムラグが入ってしまうため、JavaScriptを使用した場合と比較するとユーザー体験（UX）としては劣る。
 ### 作成したルート
 web.php
 ```bash
 Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```
+## :pushpin:JavaScriptを用いたプロフィール画像プレビュー機能
+- **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面において、プロフィール画像のプレビュー機能を実装**
+- src/public/にjs/preview.jsを作成し、auth/profile.blade.php内で使用。
+
+
 

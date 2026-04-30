@@ -110,7 +110,8 @@ class PurchaseController extends Controller
             'post_code' => $post_code,
             'address' => $address,
             'building' => $building,
-            'payment' => $paymentMethod
+            'payment' => $paymentMethod,
+            'total' => $product->price,
         ]);
 
         session()->forget(['post_code', 'address', 'building','payment']);

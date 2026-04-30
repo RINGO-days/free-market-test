@@ -1,6 +1,5 @@
 const input = document.querySelector('#image__input');
 const previewImg = document.querySelector('#preview-img');
-const previewBox = document.querySelector('.preview-img__inner')
 const reader = new FileReader();
 
 input.addEventListener('change', (event) => {

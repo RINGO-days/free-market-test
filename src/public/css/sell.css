@@ -19,6 +19,12 @@
     padding: 30px 0;
     text-align: center;
 }
+#preview-img{
+    width: 250px;
+    border: 1px #d3d3d3 solid;
+    opacity: 0;
+    object-fit: cover;
+}
 .image__input {
     display: none;
 }

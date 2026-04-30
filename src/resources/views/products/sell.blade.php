@@ -20,6 +20,7 @@
             </div>
         </div>
         <div class="image__box">
+            <img id="preview-img" src="" alt="">
             <label class="image__input-button" for="image__input">
                 <span class="image__input-button__text">ファイルを選択</span>
                 <input class="image__input" type="file" id="image__input" name="image">
@@ -103,4 +104,5 @@
         <button class="sell-button">出品する</button>
     </div>
 </form>
+<script src="{{asset('js/preview.js')}}"></script>
 @endsection

@@ -131,7 +131,7 @@ web.php
 Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```
 ## :pushpin:JavaScriptを用いたプロフィール画像プレビュー機能
-- **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面において、プロフィール画像のプレビュー機能を実装**
+- **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面、商品出品画面において、プロフィール画像のプレビュー機能を実装**
 - src/public/にjs/preview.jsを作成し、auth/profile.blade.php内で使用。
 
 

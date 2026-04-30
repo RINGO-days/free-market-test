@@ -4,15 +4,23 @@
 }
 
 .profile-img__box{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
-.profile-img{
+.profile-img__inner{
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    object-fit: cover;
     border: 2px solid #ccc;
     margin-right: 60px;
+}
+.profile-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 .image__input{
     display: none;
@@ -89,4 +97,9 @@
     font-size: 20px;
     padding: 10px;
     border: none;
+}
+
+/* javascriptのプレビュー機能 */
+#preview-image{
+
 }

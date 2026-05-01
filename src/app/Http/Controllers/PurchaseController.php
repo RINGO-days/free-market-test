@@ -154,7 +154,7 @@ class PurchaseController extends Controller
                 } else {
                     Log::error('該当する注文が見つかりませんでした。SessionID: ' . $session[$itemId]);
                 }
-                break;
+            break;
         }
         return response()->json(['status' => 'success'], 200);
     }

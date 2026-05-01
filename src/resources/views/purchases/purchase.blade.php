@@ -61,7 +61,7 @@
             </tr>
             <tr class="confirm-item__row">
                 <th class="confirm-item">支払い方法</th>
-                <td class="confirm-item">{{session('payment')}}</td>
+                <td class="confirm-item">{{session()->pull('payment')}}</td>
             </tr>
         </table>
         <form action="/purchase/checkout/{{$product->id}}" method="post">

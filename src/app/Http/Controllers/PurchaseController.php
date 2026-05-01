@@ -18,7 +18,7 @@ class PurchaseController extends Controller
     {
         $preUrl = url()->previous();
         if(!str_contains($preUrl,'newAddress')){
-            session()->forget(['post_code', 'address', 'building']);
+            session()->forget(['post_code', 'address', 'building',]);
         }
 
         $product = Product::find($item_id);

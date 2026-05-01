@@ -27,7 +27,12 @@ class ProfileController extends Controller
             $updateItem['image'] = $path;
         }
         $user->update($updateItem);
-        return redirect('/myList')->with('success','プロフィールを変更しました');
+
+        $preUrl = url()->previous();
+        if(str_contains($preUrl,'/myList')){
+            return redirect('/myList')->with('success','プロフィールを変更しました');
+        }
+        return redirect('/');
     }
 
     public function myList(Request $request)

@@ -74,7 +74,15 @@
     padding: 10px 0;
     font-size: 20px;
 }
-
+.product-buy__sold-message{
+    display: block;
+    padding: 10px 0;
+    font-size: 20px;
+    margin: 20px auto;
+    background-color: #d3d3d3;
+    text-decoration: underline;
+    text-align: center;
+}
 /* 商品説明 */
 .product-description{
     white-space: pre-wrap;

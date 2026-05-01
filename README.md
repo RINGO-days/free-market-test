@@ -90,8 +90,7 @@ php artisan migrate --seed
 php artisan storage:link
 ```
 ## 🛋テスト環境
-- 初期データの中に、テスト用のダミー商品が10個あり
-- stripeのサンドボックスでカード支払いのテスト決済を行う場合
+### **stripeのサンドボックスでカード支払いのテスト決済を行う場合**
 
 | 項目 | 入力内容 |
 | :--- | :--- |
@@ -101,6 +100,16 @@ php artisan storage:link
 | **郵便番号** | 任意の数字（例：`000-0000`） |
 | **カード名義** | 任意の文字（例：`Test Test`）
 
+### **コンビニ支払いでテストを行う場合**
+1. ターミナル内カレントディレクトリで下記のコマンドを入力し、ローカルでwebhookを受け取れる状態にする
+```bash
+stripe listen --forward-to localhost/stripe/webhook
+```
+2. 商品購入画面でコンビニ支払いを選択し購入するをクリックし、stripeのチェックアウト画面に、メールアドレス、氏名、電話番号（任意）を入力した後、支払いボタンをクリック
+3. 別のターミナルを開き、強制的にコンビニ支払いを完了させるコマンドを入力する。（stripeでは決済完了にはならないが、作成したフリマアプリ内では決済が完了する）
+```bash
+stripe trigger checkout.session.completed
+```
 ## 🛠使用技術
 - Laravel 8.83.29
 - PHP 8.1.34
@@ -117,15 +126,22 @@ php artisan storage:link
 ## 📃ER図
 ![ER図](ER.svg)
 # :beginner:その他追加機能
-## zipcloudを用いた郵便番号による住所自動入力機能
-### 概要
+## :pushpin:sold表示済みの商品の購入制限
+- 商品のステータスが購入済みの場合、商品詳細画面において、購入画面へのリンクではなく、在庫切れのメッセージを表示するように変更
+## :pushpin:未ログインユーザーのヘッダー変更
+- 未ログインユーザーに対してはヘッダー内のログイン表示、ログインユーザに対してはログアウト表示
+## :pushpin:zipcloudを用いた郵便番号による住所自動入力機能（２パターン）
 **zipcloud APIを使用。「住所を検索」ボタンを押すことによって自動で住所の入力欄に住所を入れる機能を実装**
-### 内容
-- laravelの機能であるHTTPファサードを用いて、外部APIである`https://zipcloud.ibsnet.co.jp/api/search`にアクセスし、住所データをjson形式で取得。
-- javascriptを用いずに機能を作成するにあたって、どうしてもボタンを押すとブラウザのリロードが入るため、ユーザー体験（UX）としてはやや劣るか。
+- laravelの機能であるHTTPファサードを用いた方法。ボタンを押すとブラウザのリロードが入り、プロフィール画像を選択していた場合はリセットされてしまう。またリロードにより若干のタイムラグが入ってしまう
+- JavaScriptを用いたリロードを挟まない自動入力。ユーザー体験（UX）としてはこちらが勝る。
 ### 作成したルート
 web.php
 ```bash
 Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```
-
+## :pushpin:JavaScriptを用いたプロフィール画像プレビュー機能
+- **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面、商品出品画面において、選択画像のプレビュー機能を実装**
+- src/public/にjs/preview.jsを作成し、auth/profile.blade.php内で使用。
+#### 参考文献
+- （書籍）<a href="https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FJavaScript%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4815615756/ref=asc_df_4815615756?mcid=28f7a8ed18ae32cd87c62ffa05be06d6&th=1&psc=1&tag=jpgo-22&linkCode=df0&hvadid=707442440829&hvpos=&hvnetw=g&hvrand=16030691145050053060&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9245132&hvtargid=pla-1944051673189&psc=1&hvocijid=16030691145050053060-4815615756-&hvexpln=0">一冊ですべて身に付くJavaScript入門講座</a>
+- <a href="https://zenn.dev/tatsuyasusukida/articles/javascript-image-preview">参考サイト</a>

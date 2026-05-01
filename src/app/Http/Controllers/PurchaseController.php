@@ -18,7 +18,7 @@ class PurchaseController extends Controller
     {
         $preUrl = url()->previous();
         if(!str_contains($preUrl,'newAddress')){
-            session()->forget(['post_code', 'address', 'building']);
+            session()->forget(['post_code', 'address', 'building',]);
         }
 
         $product = Product::find($item_id);
@@ -110,7 +110,8 @@ class PurchaseController extends Controller
             'post_code' => $post_code,
             'address' => $address,
             'building' => $building,
-            'payment' => $paymentMethod
+            'payment' => $paymentMethod,
+            'total' => $product->price,
         ]);
 
         session()->forget(['post_code', 'address', 'building','payment']);
@@ -153,7 +154,7 @@ class PurchaseController extends Controller
                 } else {
                     Log::error('該当する注文が見つかりませんでした。SessionID: ' . $session[$itemId]);
                 }
-                break;
+            break;
         }
         return response()->json(['status' => 'success'], 200);
     }

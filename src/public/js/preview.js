@@ -1,6 +1,5 @@
 const input = document.querySelector('#image__input');
 const previewImg = document.querySelector('#preview-img');
-const previewBox = document.querySelector('.preview-img__inner')
 const reader = new FileReader();
 
 input.addEventListener('change', (event) => {
@@ -16,3 +15,16 @@ input.addEventListener('change', (event) => {
     }
     reader.readAsDataURL(image);
 });
+
+const postCode = document.querySelector('#input-post_code');
+const button = document.querySelector('#button');
+const address = document.querySelector('#address');
+
+button.addEventListener('click', async () => {
+    const zipCode = postCode.value;
+    const newZipCode = zipCode.replace('-', '');
+
+    const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${newZipCode}`);
+    const data = await response.json();
+    address.value = data.results[0].address1 + data.results[0].address2 + data.results[0].address3;
+})

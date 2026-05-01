@@ -24,8 +24,9 @@
                             @else
                             <img src="/img/ハートロゴ_デフォルト.png" alt="お気に入り解除">
                             @endif
+                        @else
+                            <img src="/img/ハートロゴ_デフォルト.png" alt="お気に入り解除">
                         @endauth
-                        <img src="/img/ハートロゴ_デフォルト.png" alt="お気に入り解除">
                     </button>
                     <span class="product-number_of_like__number">{{$product->number_of_like}}</span>
                 </form>
@@ -35,8 +36,12 @@
                 <span class="product-number_of_comment__number">{{$product->number_of_comment}}</span>
             </div>
         </div>
-        <div class="">
-            <a  class="product-buy__link" href="/purchase/{{$product->id}}">購入手続きへ</a>
+        <div>
+            @if( $product->status === 1)
+                <a class="product-buy__link" href="/purchase/{{$product->id}}">購入手続きへ</a>
+            @else
+                <span class="product-buy__sold-message">こちらの商品の在庫はありません</span>
+            @endif
         </div>
         <h2>商品説明</h2>
         <div class="product-description__box">

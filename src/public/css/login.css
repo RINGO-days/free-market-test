@@ -42,3 +42,14 @@
     padding: 10px;
     border: none;
 }
+.register-link__box{
+    margin: 30px auto;
+    text-align: center;
+}
+.register-link{
+    text-decoration: none;
+    font-size: 20px;
+}
+.register-link:hover{
+    text-decoration: underline;
+}

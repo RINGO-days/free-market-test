@@ -29,14 +29,13 @@
             <form action="/purchase/payment/{{$product->id}}">
                 <div class="payment-select__box">
                     @csrf
-                    <select class="payment-select" name="payment">
+                    <select class="payment-select" name="payment" onchange="this.form.submit()">
                         <option value="未選択" disabled selected>選択してください</option>
-                        <option value="コンビニ支払い">コンビニ支払い</option>
-                        <option value="カード支払い">カード支払い</option>
+                        <option value="コンビニ支払い" {{ session('payment') === 'コンビニ支払い' ? 'selected' : ''}}>コンビニ支払い</option>
+                        <option value="カード支払い" {{ session('payment') === 'カード支払い' ? 'selected' : ''}}>カード支払い</option>
                     </select>
                     <span class="select-icon">▼</span>
                 </div>
-                <button type="submit">変更</button>
             </form>
             <div class="error-box">
                 @error('payment')

@@ -9,7 +9,6 @@ use App\Http\Controllers\ProfileController;
 Route::middleware('auth','verified')->group(function(){
     Route::get('/profile',[ProfileController::class,'profile']);
     Route::post('/profile/create/',[ProfileController::class,'profileCreate']);
-    Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 
     Route::prefix('product')->group(function(){
         Route::post('like/{item_id}',[ProductController::class,'addLike']);

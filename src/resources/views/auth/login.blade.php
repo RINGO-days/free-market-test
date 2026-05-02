@@ -36,5 +36,8 @@
             <button class="login-form__button">ログイン</button>
         </div>
     </form>
+    <div class="register-link__box">
+        <a href="/register" class="register-link">会員登録はこちら</a>
+    </div>
 </div>
 @endsection

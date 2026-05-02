@@ -30,7 +30,7 @@
                 <div class="payment-select__box">
                     @csrf
                     <select class="payment-select" name="payment" onchange="this.form.submit()">
-                        <option value="未選択" disabled selected>選択してください</option>
+                        <option value="未選択" hidden>選択してください</option>
                         <option value="コンビニ支払い" {{ session('payment') === 'コンビニ支払い' ? 'selected' : ''}}>コンビニ支払い</option>
                         <option value="カード支払い" {{ session('payment') === 'カード支払い' ? 'selected' : ''}}>カード支払い</option>
                     </select>

@@ -67,10 +67,10 @@
             <div class="buy-button__box">
                 @csrf
                 <button class="buy-button">購入する</button>
-                <input type="hidden" name="payment" value="{{ old('payment',session()->pull('payment')) }}">
                 <input type="hidden" name="post_code" value="{{session('post_code') ?? $user->post_code}}">
                 <input type="hidden" name="address" value="{{session('address') ?? $user->address}}">
                 <input type="hidden" name="building" value="{{session()->exists('building') ? session('building') : $user->building}}">
+                <input type="hidden" name="payment" value="{{ old('payment',session('payment')) }}">
             </div>
         </form>
     </div>

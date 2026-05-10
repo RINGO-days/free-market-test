@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Condition;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
 
@@ -28,6 +30,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/腕時計.jpg');
         $dummyImage = 'products/腕時計.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','良好')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '腕時計',
@@ -37,14 +40,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
-            'condition_id' => 1,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([1,5]);
+        $categories = Category::whereIn('content',['ファッション','メンズ'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/HDD.jpg');
         $dummyImage = 'products/HDD.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','目立った傷や汚れなし')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'HDD',
@@ -54,14 +59,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高速で信頼性の高いハードディスク',
-            'condition_id' => 2,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([2]);
+        $categories = Category::whereIn('content',['家電'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/玉ねぎ.jpg');
         $dummyImage = 'products/玉ねぎ.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','やや傷や汚れあり')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '玉ねぎ３束',
@@ -71,14 +78,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '新鮮な玉ねぎ３束のセット',
-            'condition_id' => 3,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([10]);
+        $categories = Category::whereIn('content',['キッチン'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/靴.jpg');
         $dummyImage = 'products/靴.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','状態が悪い')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '革靴',
@@ -87,14 +96,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'クラシックなデザインの革靴',
-            'condition_id' => 4,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([1,5]);
+        $categories = Category::whereIn('content',['ファッション','メンズ'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/ノートPC.jpg');
         $dummyImage = 'products/ノートPC.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','良好')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'ノートPC',
@@ -103,14 +114,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高性能なノートパソコン',
-            'condition_id' => 1,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([2]);
+        $categories = Category::whereIn('content',['家電'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/マイク.jpg');
         $dummyImage = 'products/マイク.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','目立った傷や汚れなし')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'マイク',
@@ -120,14 +133,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '高音質のレコーディング用マイク',
-            'condition_id' => 2,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([2]);
+        $categories = Category::whereIn('content',['家電'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/ショルダーバック.jpg');
         $dummyImage = 'products/ショルダーバック.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','やや傷や汚れあり')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'ショルダーバック',
@@ -136,14 +151,16 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => 'おしゃれなショルダーバック',
-            'condition_id' => 3,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([1,4]);
+        $categories = Category::whereIn('content',['ファッション','レディース'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/タンブラー.jpg');
         $dummyImage = 'products/タンブラー.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','状態が悪い')->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'タンブラー',
@@ -153,14 +170,17 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '使いやすいタンブラー',
-            'condition_id' => 4,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([10]);
+        $categories = Category::whereIn('content',['キッチン'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/コーヒーミル.jpg');
         $dummyImage = 'products/コーヒーミル.jpg';
-        File::copy($path,storage_path('app/public/' . $dummyImage));$product = Product::create([
+        File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content','良好')->value('id');
+        $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'コーヒーミル',
             'image' => $dummyImage,
@@ -172,7 +192,8 @@ class ProductsTableSeeder extends Seeder
             'condition_id' => 1,
             'status' => 1
         ]);
-        $product->categories()->attach([10]);
+        $categories = Category::whereIn('content',['キッチン'])->pluck('id');
+        $product->categories()->attach($categories);
 
         $path = public_path('img/メイクセット.jpg');
         $dummyImage = 'products/メイクセット.jpg';
@@ -184,9 +205,10 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '便利なメイクアップセット',
-            'condition_id' => 2,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
-        $product->categories()->attach([4,6]);
+        $categories = Category::whereIn('content',['レディース','コスメ'])->pluck('id');
+        $product->categories()->attach($categories);
     }
 }

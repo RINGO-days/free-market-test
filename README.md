@@ -135,7 +135,7 @@ stripe trigger checkout.session.completed
 - laravelの機能であるHTTPファサードを用いた方法。ボタンを押すとブラウザのリロードが入り、プロフィール画像を選択していた場合はリセットされてしまう。またリロードにより若干のタイムラグが入ってしまう
 - JavaScriptを用いたリロードを挟まない自動入力。ユーザー体験（UX）としてはこちらが勝る。
 ### 作成したルート
-api.php
+web.php
 ```bash
 Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```

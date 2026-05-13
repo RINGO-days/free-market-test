@@ -5,6 +5,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ProfileController;
 
+Route::post('/stripe/webhook', [PurchaseController::class, 'handleWebhook']);
+Route::get('/',[ProductController::class,'index']);
+Route::get('show/{item_id}',[ProductController::class,'show']);
 
 Route::middleware('auth','verified')->group(function(){
     Route::get('/profile',[ProfileController::class,'profile']);
@@ -34,9 +37,9 @@ Route::middleware('auth','verified')->group(function(){
     });
 });
 
-Route::post('/stripe/webhook', [PurchaseController::class, 'handleWebhook']);
-Route::get('/',[ProductController::class,'index']);
-Route::get('show/{item_id}',[ProductController::class,'show']);
+
+Route::post('addressSearch',[ProfileController::class,'addressSearch']);//住所検索アクションルート
+
 
 
 

@@ -27,4 +27,5 @@ button.addEventListener('click', async () => {
     const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${newZipCode}`);
     const data = await response.json();
     address.value = data.results[0].address1 + data.results[0].address2 + data.results[0].address3;
+    console.log(address.value);
 })

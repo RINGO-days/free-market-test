@@ -10,6 +10,11 @@
         {{session('success')}}
     </div>
 @endif
+@if(session('message'))
+    <div class="middleware-message">
+        {{session('message')}}
+    </div>
+@endif
 <h1 class="login-ttl">ログイン</h1>
 <div class="login">
     <form action="" method="post">

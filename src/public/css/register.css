@@ -55,13 +55,4 @@
     text-decoration: underline;
 }
 
-.middleware-message{
-    background-color: #E3F2FD;
-    color: #1976D2;
-    border: 1px solid #BBDEFB;
-    animation: fadeout 5s ease forwards;
-    margin: 0 auto;
-    font-size: 20px;
-}
-
 

@@ -14,7 +14,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        session()->flash('message','この機能を使用するには会員登録が必要です。');
-        return route('register');
+        session()->flash('message','この機能を使用するにはログイン、もしくは会員登録が必要です。');
+        return route('login');
     }
 }

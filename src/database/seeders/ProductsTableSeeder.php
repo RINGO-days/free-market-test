@@ -26,11 +26,15 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         $test_user = User::first();
+        $conditionA = "良好";
+        $conditionB = "目立った傷や汚れなし";
+        $conditionC = "やや傷や汚れあり";
+        $conditionD = "状態が悪い";
 
         $path = public_path('img/腕時計.jpg');
         $dummyImage = 'products/腕時計.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','良好')->value('id');
+        $conditionId = Condition::where('content',$conditionA)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '腕時計',
@@ -49,7 +53,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/HDD.jpg');
         $dummyImage = 'products/HDD.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','目立った傷や汚れなし')->value('id');
+        $conditionId = Condition::where('content',$conditionB)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'HDD',
@@ -68,7 +72,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/玉ねぎ.jpg');
         $dummyImage = 'products/玉ねぎ.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','やや傷や汚れあり')->value('id');
+        $conditionId = Condition::where('content',$conditionC)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '玉ねぎ３束',
@@ -87,7 +91,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/靴.jpg');
         $dummyImage = 'products/靴.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','状態が悪い')->value('id');
+        $conditionId = Condition::where('content',$conditionD)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => '革靴',
@@ -105,7 +109,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/ノートPC.jpg');
         $dummyImage = 'products/ノートPC.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','良好')->value('id');
+        $conditionId = Condition::where('content',$conditionA)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'ノートPC',
@@ -123,7 +127,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/マイク.jpg');
         $dummyImage = 'products/マイク.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','目立った傷や汚れなし')->value('id');
+        $conditionId = Condition::where('content',$conditionB)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'マイク',
@@ -142,7 +146,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/ショルダーバック.jpg');
         $dummyImage = 'products/ショルダーバック.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','やや傷や汚れあり')->value('id');
+        $conditionId = Condition::where('content',$conditionC)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'ショルダーバック',
@@ -160,7 +164,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/タンブラー.jpg');
         $dummyImage = 'products/タンブラー.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','状態が悪い')->value('id');
+        $conditionId = Condition::where('content',$conditionD)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'タンブラー',
@@ -179,7 +183,7 @@ class ProductsTableSeeder extends Seeder
         $path = public_path('img/コーヒーミル.jpg');
         $dummyImage = 'products/コーヒーミル.jpg';
         File::copy($path,storage_path('app/public/' . $dummyImage));
-        $conditionId = Condition::where('content','良好')->value('id');
+        $conditionId = Condition::where('content',$conditionA)->value('id');
         $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'コーヒーミル',
@@ -189,7 +193,7 @@ class ProductsTableSeeder extends Seeder
             'number_of_like' => 0,
             'number_of_comment' => 0,
             'description' => '手動のコーヒーミル',
-            'condition_id' => 1,
+            'condition_id' => $conditionId,
             'status' => 1
         ]);
         $categories = Category::whereIn('content',['キッチン'])->pluck('id');
@@ -197,7 +201,9 @@ class ProductsTableSeeder extends Seeder
 
         $path = public_path('img/メイクセット.jpg');
         $dummyImage = 'products/メイクセット.jpg';
-        File::copy($path,storage_path('app/public/' . $dummyImage));$product = Product::create([
+        File::copy($path,storage_path('app/public/' . $dummyImage));
+        $conditionId = Condition::where('content',$conditionB)->value('id');
+        $product = Product::create([
             'user_id' => $test_user->id,
             'name' => 'メイクセット',
             'image' => $dummyImage,

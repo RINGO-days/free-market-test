@@ -104,5 +104,5 @@
         <button class="sell-button">出品する</button>
     </div>
 </form>
-<script src="{{asset('js/preview.js')}}"></script>
+<script src="{{asset('js/script.js')}}"></script>
 @endsection

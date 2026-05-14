@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Like;
-use App\Models\User;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Condition;

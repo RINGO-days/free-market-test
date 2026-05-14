@@ -15,6 +15,8 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\VerifyEmailResponse;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\LoginResponse;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -58,6 +60,16 @@ class FortifyServiceProvider extends ServiceProvider
         }
     });
 
+        $this->app->instance(Loginresponse::class, new class implements LoginResponse{
+        public function toResponse($request)
+        {
+            if(! $request->user()->hasVerifiedEmail()){
+                return redirect('/email/verify');
+            }
+            return redirect('/');
+        }
+        });
+
         $this->app->instance(VerifyEmailResponse::class, new class implements VerifyEmailResponse {
         public function toResponse($request)
         {
@@ -68,11 +80,9 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
         public function toResponse($request)
         {
-            if(auth()->user()){
             return redirect('/login')->with('success', 'ログアウトしました。');
-            }
-            return redirect('/login');
         }
     });
+
     }
 }

@@ -5,6 +5,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ProfileController;
 
+Route::post('/stripe/webhook', [PurchaseController::class, 'handleWebhook']);
+Route::get('/',[ProductController::class,'index']);
+Route::get('show/{item_id}',[ProductController::class,'show']);
 
 Route::middleware('auth','verified')->group(function(){
     Route::get('/profile',[ProfileController::class,'profile']);
@@ -19,12 +22,12 @@ Route::middleware('auth','verified')->group(function(){
 
     Route::prefix('purchase')->group(function(){
         Route::get('{item_id}',[PurchaseController::class,'purchase']);
-        Route::get('newAddress/{item_id}', [PurchaseController::class, 'newAddress']); //住所変更ページビュー
-        Route::post('sessionAddress/{item_id}', [PurchaseController::class, 'sessionAddress']); //住所変更を保持するアクション
+        Route::get('newAddress/{item_id}', [PurchaseController::class, 'newAddress']);
+        Route::post('sessionAddress/{item_id}', [PurchaseController::class, 'sessionAddress']);
         Route::post('checkout/{item_id}',[PurchaseController::class,'checkout']);
         Route::get('cancel/{item_id}',[PurchaseController::class,'cancel']);
         Route::get('success/{item_id}', [PurchaseController::class, 'success']);
-        Route::get('payment/{item_id}', [PurchaseController::class, 'paymentUpdate']); //購入画面、支払い方法変更の更新アクション
+        Route::get('payment/{item_id}', [PurchaseController::class, 'paymentUpdate']);
     });
 
     Route::prefix('myList')->group(function(){
@@ -34,9 +37,9 @@ Route::middleware('auth','verified')->group(function(){
     });
 });
 
-Route::post('/stripe/webhook', [PurchaseController::class, 'handleWebhook']);
-Route::get('/',[ProductController::class,'index']);
-Route::get('show/{item_id}',[ProductController::class,'show']);
+
+Route::post('addressSearch',[ProfileController::class,'addressSearch']);//住所検索アクションルート
+
 
 
 

@@ -130,6 +130,8 @@ stripe trigger checkout.session.completed
 - 商品のステータスが購入済みの場合、商品詳細画面において、購入画面へのリンクではなく、在庫切れのメッセージを表示するように変更
 ## :pushpin:未ログインユーザーのヘッダー変更
 - 未ログインユーザーに対してはヘッダー内のログイン表示、ログインユーザに対してはログアウト表示
+## :pushpin:プロフィール画像未登録ユーザーのデフォルトの画像
+- プロフィール画像を登録しなかったユーザーに対して、商品コメントの際や、プロフィール画面表示の際に「no image」の画像が表示されるように変更
 ## :pushpin:zipcloudを用いた郵便番号による住所自動入力機能（２パターン）
 **zipcloud APIを使用。「住所を検索」ボタンを押すことによって自動で住所の入力欄に住所を入れる機能を実装**
 - laravelの機能であるHTTPファサードを用いた方法。ボタンを押すとブラウザのリロードが入り、プロフィール画像を選択していた場合はリセットされてしまう。またリロードにより若干のタイムラグが入ってしまう
@@ -141,7 +143,7 @@ Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```
 ## :pushpin:JavaScriptを用いたプロフィール画像プレビュー機能
 - **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面、商品出品画面において、選択画像のプレビュー機能を実装**
-- src/public/にjs/preview.jsを作成し、auth/profile.blade.php内で使用。
+- src/public/にjs/script.jsを作成し、auth/profile.blade.php内で使用。
 #### 参考文献
 - （書籍）<a href="https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FJavaScript%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4815615756/ref=asc_df_4815615756?mcid=28f7a8ed18ae32cd87c62ffa05be06d6&th=1&psc=1&tag=jpgo-22&linkCode=df0&hvadid=707442440829&hvpos=&hvnetw=g&hvrand=16030691145050053060&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9245132&hvtargid=pla-1944051673189&psc=1&hvocijid=16030691145050053060-4815615756-&hvexpln=0">一冊ですべて身に付くJavaScript入門講座</a>
 - <a href="https://zenn.dev/tatsuyasusukida/articles/javascript-image-preview">参考サイト</a>

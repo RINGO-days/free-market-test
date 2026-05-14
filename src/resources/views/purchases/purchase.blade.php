@@ -50,6 +50,11 @@
             </div>
             <p>〒{{session('post_code') ?? $user->post_code}}</p>
             <p>{{session('address') ?? $user->address}}<br>{{session()->exists('building') ? session('building') : $user->building}}</p>
+            <div class="error-box">
+                @error('address')
+                    <span class="error-message">{{$message}}</span>
+                @enderror
+            </div>
         </div>
     </div>
     <div class="confirm-box">

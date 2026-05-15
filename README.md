@@ -4,7 +4,7 @@ coachtech模擬案件　フリマアプリ
 **🐳Dockerビルド**
 1. gitのクローン
 ```bash
-git@github.com:RINGO-days/free-market-test.git
+git clone git@github.com:RINGO-days/free-market-test.git
 ```
 2. Dockerデスクトップアプリを立ち上げる
 
@@ -15,7 +15,7 @@ docker-compose up -d --build
 <details>
 <summary style="cursor: pointer;">⚠️ Mac(Apple Silicon)をお使いの方</summary>
 
->Apple Silicon搭載のMacでは、sail up -d実行時に以下のエラーが発生することがあります
+>Apple Silicon搭載のMacでは、docker-conpose up -d実行時に以下のエラーが発生することがあります
 >### 🚫症状
 >`The requested image's platform (linux/amd64) does not match the detected host platform`
 >などの警告が出て、作業が終了する場合がある。
@@ -53,13 +53,14 @@ cp .env.example .env
 DB_CONNECTION=mysql
 DB_HOST=mysql   ※変更
 DB_PORT=3306
-DB_DATABASE=laravel_db  ※変更
-DB_USERNAME=laravel_user    ※変更
-DB_PASSWORD=laravel_pass    ※変更
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
 ...
 ```
-🔐**<a href="https://dashboard.stripe.com/test/apikeys">stripe APIキー</a>** ←こちらから公開可能キーならびにシークレットキーをコピペしてください
+🔐**<a href="https://dashboard.stripe.com/test/apikeys" target="_blank">stripe APIキー</a>** ←こちらから公開可能キーならびにシークレットキーをコピペしてください
 ```text
+# .envファイル内（空いている行）
 ---stripeのAPIキー設定---
 STRIPE_PUBLIC_KEY=pk_test_xxxxxxxx      ←
 STRIPE_SECRET_KEY=sk_test_xxxxxxxx      ←値を貼り付け
@@ -67,7 +68,7 @@ STRIPE_SECRET_KEY=sk_test_xxxxxxxx      ←値を貼り付け
 <details>
 <summary style=" cursor: pointer";>⚠️stripeアカウントをお持ちでない方はこちら</summary>
 
->1. <a href="https://dashboard.stripe.com/register">Stripe公式サイト</a>で、アカウント（無料）を作成
+>1. <a href="https://dashboard.stripe.com/register" target="_blank">Stripe公式サイト</a>で、アカウント（無料）を作成
 >2. ダッシュボードの「開発者」＞「APIキー」から、テストモードの「公開可能キー」と「シークレットキー」を取得します。
 >3. .env ファイルの以下の項目に値を貼り付けてください。
 >```text
@@ -145,5 +146,5 @@ Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 - **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面、商品出品画面において、選択画像のプレビュー機能を実装**
 - src/public/にjs/script.jsを作成し、auth/profile.blade.php内で使用。
 #### 参考文献
-- （書籍）<a href="https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FJavaScript%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4815615756/ref=asc_df_4815615756?mcid=28f7a8ed18ae32cd87c62ffa05be06d6&th=1&psc=1&tag=jpgo-22&linkCode=df0&hvadid=707442440829&hvpos=&hvnetw=g&hvrand=16030691145050053060&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9245132&hvtargid=pla-1944051673189&psc=1&hvocijid=16030691145050053060-4815615756-&hvexpln=0">一冊ですべて身に付くJavaScript入門講座</a>
-- <a href="https://zenn.dev/tatsuyasusukida/articles/javascript-image-preview">参考サイト</a>
+- （書籍）<a href="https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FJavaScript%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4815615756/ref=asc_df_4815615756?mcid=28f7a8ed18ae32cd87c62ffa05be06d6&th=1&psc=1&tag=jpgo-22&linkCode=df0&hvadid=707442440829&hvpos=&hvnetw=g&hvrand=16030691145050053060&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9245132&hvtargid=pla-1944051673189&psc=1&hvocijid=16030691145050053060-4815615756-&hvexpln=0" target="_blank">一冊ですべて身に付くJavaScript入門講座</a>
+- <a href="https://zenn.dev/tatsuyasusukida/articles/javascript-image-preview" target="_blank">参考サイト</a>

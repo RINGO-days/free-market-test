@@ -33,7 +33,7 @@
                             @if(auth()->user())
                                 <button class="logout-button">ログアウト</button>
                             @else
-                                <button class="logout-button">ログイン</button>
+                                <a href="{{route('login')}}" class="logout-button">ログイン</a>
                             @endif
                         </form>
                     </li>

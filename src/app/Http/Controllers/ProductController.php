@@ -20,7 +20,7 @@ class ProductController extends Controller
         $query = Product::KeywordSearch($request->keyword);
 
         if($request->query('tab') === "myList" && !Auth::check()){
-            return redirect('/register')->with('message','この機能を使うには会員登録が必要です');
+            return redirect('/login')->with('message','この機能を使うにはログイン、もしくは会員登録が必要です。');
         }elseif($request->query('tab') === "myList"){
             $likes = Like::where('user_id',auth()->id())->pluck('product_id');
             $query->whereIn('id',$likes);

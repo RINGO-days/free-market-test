@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
 
 class ProductsTableSeeder extends Seeder
@@ -30,6 +29,8 @@ class ProductsTableSeeder extends Seeder
         $conditionB = "目立った傷や汚れなし";
         $conditionC = "やや傷や汚れあり";
         $conditionD = "状態が悪い";
+
+        File::makeDirectory(storage_path('app/public/products'),0755,true,true);
 
         $path = public_path('img/腕時計.jpg');
         $dummyImage = 'products/腕時計.jpg';

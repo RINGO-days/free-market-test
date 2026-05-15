@@ -5,11 +5,6 @@
 @endsection
 
 @section('main')
-@if(session('message'))
-    <div class="middleware-message">
-        {{session('message')}}
-    </div>
-@endif
 <h1 class="register-ttl">会員登録</h1>
 <div class="register-form">
     <form action="{{ route('register') }}" method="post">

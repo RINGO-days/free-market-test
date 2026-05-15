@@ -45,6 +45,10 @@
 .logout-button:hover{
     border: 1px white solid;
 }
+a.logout-button{
+    text-decoration: none;
+    display: block;
+}
 .mypage{
     display: inline-block;
     color: white;

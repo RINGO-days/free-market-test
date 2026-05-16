@@ -7,8 +7,12 @@ coachtech模擬案件　フリマアプリ
 git clone git@github.com:RINGO-days/free-market-test.git
 ```
 2. Dockerデスクトップアプリを立ち上げる
+3. ワーキングディレクトリに移動
+```bash
+cd free-market-test
+```
 
-3. Dockerの立ち上げ
+4. Dockerの立ち上げ
 ```bash
 docker-compose up -d --build
 ```
@@ -84,7 +88,7 @@ php artisan key:generate
 ```
 ### 6. データベースおよび初期データの投入
 ```bash
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 ### 7. 商品画像用のストレージの公開
 ```bash
@@ -122,6 +126,7 @@ stripe trigger checkout.session.completed
 - stripe決済
 ## 📍開発環境
 - http://localhost ホーム画面
+- http://localhost/register 新規会員登録画面
 - http://localhost:8080 phpMyAdmin
 - http://localhost:8025 MailHog
 ## 📃ER図

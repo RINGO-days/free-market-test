@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -14,7 +13,7 @@ class LogoutTest extends TestCase
      *
      * @return void
      */
-
+    use RefreshDatabase;
     public function test_ログアウトができる()
     {
         $user = User::factory()->create();

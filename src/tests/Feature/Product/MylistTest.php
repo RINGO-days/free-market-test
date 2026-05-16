@@ -55,6 +55,6 @@ class MyListTest extends TestCase
     {
         $response = $this->get('/?tab=myList');
         $response->assertStatus(302);
-        $response->assertRedirect('/register');
+        $response->assertRedirect('/login');
     }
 }

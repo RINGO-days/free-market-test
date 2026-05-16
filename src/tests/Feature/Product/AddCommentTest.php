@@ -27,13 +27,13 @@ class AddCommentTest extends TestCase
             'comment' => 'テスト',
         ];
 
-        $response = $this->actingAs($user)->post("/product/comment/{$product->id}",$formData);
-        $this->assertDatabaseHas('comments',[
+        $response = $this->actingAs($user)->post("/product/comment/{$product->id}", $formData);
+        $this->assertDatabaseHas('comments', [
             'user_id' => $user->id,
             'product_id' => $product->id,
             'comment' => 'テスト',
         ]);
-        $this->assertDatabaseHas('products',[
+        $this->assertDatabaseHas('products', [
             'number_of_comment' => 1,
         ]);
         $response->assertStatus(302);
@@ -45,7 +45,7 @@ class AddCommentTest extends TestCase
         $product = Product::first();
 
         $response = $this->post("/product/comment/{$product->id}");
-        $response->assertRedirect('/register');
+        $response->assertRedirect('/login');
     }
 
     public function test_コメントが入力されていない場合、バリデーションメッセージが表示される()
@@ -59,7 +59,7 @@ class AddCommentTest extends TestCase
             'comment' => '',
         ];
 
-        $response = $this->actingAs($user)->post("/product/comment/{$product->id}",$formData);
+        $response = $this->actingAs($user)->post("/product/comment/{$product->id}", $formData);
         $response->assertSessionHasErrors([
             'comment' => 'コメントを入力してください'
         ]);
@@ -74,10 +74,10 @@ class AddCommentTest extends TestCase
         $formData = [
             'user_id' => $user->id,
             'product_id' => $product->id,
-            'comment' => str_repeat('あ',226),
+            'comment' => str_repeat('あ', 226),
         ];
 
-        $response = $this->actingAs($user)->post("/product/comment/{$product->id}",$formData);
+        $response = $this->actingAs($user)->post("/product/comment/{$product->id}", $formData);
         $response->assertSessionHasErrors([
             'comment' => 'コメントは225文字以内で入力してください'
         ]);

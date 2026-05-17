@@ -50,21 +50,9 @@ composer install
 cp .env.example .env
 ```
 ### 4. .envファイルの設定（VScodeなどのエディタで編集）
-```text
-# .envファイル内
-
----DB設定---
-DB_CONNECTION=mysql
-DB_HOST=mysql   ※変更
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-...
-```
 🔐**<a href="https://dashboard.stripe.com/test/apikeys" target="_blank">stripe APIキー</a>** ←こちらから公開可能キーならびにシークレットキーをコピペしてください
 ```text
-# .envファイル内（空いている行）
+# .envファイル内
 ---stripeのAPIキー設定---
 STRIPE_PUBLIC_KEY=pk_test_xxxxxxxx      ←
 STRIPE_SECRET_KEY=sk_test_xxxxxxxx      ←値を貼り付け

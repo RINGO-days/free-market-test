@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<h1 class="profile-ttl">プロフィール設定</h1>
+<h1 class="profile-ttl">プロフィール</h1>
 <form action="/profile/create" enctype="multipart/form-data" method="post">
     @csrf
     <div class="profile-img__box">
@@ -36,7 +36,7 @@
             <p class="profile-form__ttl">郵便番号</p>
             <div class="post-code__box__inner">
                 <input class="profile-form__input" id="input-post_code" type="text" name="post_code" value="{{old('post_code',$user->post_code)}}">
-                <button class="address-search_button" id="button" formaction="/addressSearch">住所を検索</button>
+                <button class="address-search_button" formaction="/addressSearch">住所を検索</button>
                 <!--JavaScriptを用いた住所検索、有効にする場合は上記のボタンタグをコメントアウトする-->
                 <!-- <button class="address-search_button" id="button" type="button">住所を検索</button> -->
             </div>
@@ -44,6 +44,9 @@
                 @error('post_code')
                 <span class="error-message">{{$message}}</span>
                 @enderror
+                <span class="error-message" id="error-message">
+                    {{ session('message') ?? '' }}
+                </span>
             </div>
         </div>
         <div class="profile-form__box">

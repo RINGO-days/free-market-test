@@ -16,8 +16,8 @@ class PurchaseController extends Controller
     public function purchase($item_id)
     {
         $preUrl = url()->previous();
-        if(!str_contains($preUrl,'newAddress')){
-            session()->forget(['post_code', 'address', 'building',]);
+        if(!str_contains($preUrl,'purchase')) {
+            session()->forget(['post_code', 'address', 'building','payment']);
         }
 
         $product = Product::find($item_id);

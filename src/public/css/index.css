@@ -1,4 +1,3 @@
-/* タブ切り替え装飾 */
 .tab-box{
     margin-top: 50px;
     margin-bottom: 20px;
@@ -37,7 +36,6 @@
     border-radius: 10px;
     transition: background-color 0.3s;
 }
-/* 商品カード */
 .product-box{
     display: flex;
     flex-wrap: wrap;

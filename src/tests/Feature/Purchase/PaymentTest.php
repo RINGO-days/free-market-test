@@ -26,7 +26,7 @@ class PaymentTest extends TestCase
         ];
 
         $this->actingAs($user)->get("/purchase/{$product->id}");
-        $response = $this->actingAs($user)->get("/purchase/payment/{$product->id}",$formData);
+        $response = $this->actingAs($user)->post("/purchase/payment/{$product->id}",$formData);
         $followResponse = $this->followRedirects($response);
         $followResponse->assertStatus(200);
         $followResponse->assertSee('カード支払い');

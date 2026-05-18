@@ -1,10 +1,8 @@
-/* タイトル */
 .login-ttl {
     margin: 80px auto;
     text-align: center;
 }
 
-/* 入力画面 */
 .login-form__box {
     margin: 0 auto;
     width: 50%;
@@ -25,14 +23,11 @@
     height: 30px;
     color: red;
 }
-
-/* ログインボタン */
 .login-form__submit-box {
     margin-top: 80px;
     width: 50%;
     margin: 80px auto 30px auto;
 }
-
 .login-form__button {
     width: 100%;
     background-color: #ff4500;

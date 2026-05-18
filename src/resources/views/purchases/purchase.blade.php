@@ -26,7 +26,7 @@
         </div>
         <div class="payment__box">
             <h3>支払い方法</h3>
-            <form action="/purchase/payment/{{$product->id}}">
+            <form action="/purchase/payment/{{$product->id}}" method="post">
                 <div class="payment-select__box">
                     @csrf
                     <select class="payment-select" name="payment" onchange="this.form.submit()">

@@ -1,4 +1,3 @@
-/* タイトル */
 .register-form{
     margin-bottom: 50px;
 }
@@ -7,7 +6,6 @@
     text-align: center;
 }
 
-/* 入力画面 */
 .register-form__box{
     margin: 0 auto;
     width: 50%;
@@ -26,7 +24,6 @@
     color: red;
 }
 
-/* 送信ボタン */
 .register-form__submit-box{
     margin-top: 80px;
     width: 50%;
@@ -42,7 +39,6 @@
     border: none;
 }
 
-/* ログイン画面へ */
 .login-box{
     text-align: center;
 }

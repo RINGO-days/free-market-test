@@ -36,9 +36,9 @@
             <p class="profile-form__ttl">郵便番号</p>
             <div class="post-code__box__inner">
                 <input class="profile-form__input" id="input-post_code" type="text" name="post_code" value="{{old('post_code',$user->post_code)}}">
-                <!-- <button class="address-search_button" formaction="/addressSearch">住所を検索</button> -->
+                <button class="address-search_button" formaction="/addressSearch">住所を検索</button>
                 <!--JavaScriptを用いた住所検索、有効にする場合は上記のボタンタグをコメントアウトする-->
-                <button class="address-search_button" id="button" type="button">住所を検索</button>
+                <!-- <button class="address-search_button" id="button" type="button">住所を検索</button> -->
             </div>
             <div class="error-box">
                 @error('post_code')

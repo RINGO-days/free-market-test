@@ -82,7 +82,6 @@
     background: linear-gradient(transparent 60%, #ffc1c1 40%);
     display: inline-block;
 }
-/* 送信ボタン */
 .profile-form__submit-box {
     margin-top: 80px;
     width: 50%;

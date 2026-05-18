@@ -30,7 +30,6 @@
     color: red;
 }
 
-/* 送信ボタン */
 .address-form__submit-box {
     margin-top: 80px;
     width: 50%;
@@ -45,4 +44,14 @@
     font-size: 20px;
     padding: 10px;
     border: none;
+}
+.address-search_button {
+    width: 20%;
+    padding: 10px 0;
+    margin-left: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.post-code__box__inner{
+    display: flex;
 }

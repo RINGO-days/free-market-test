@@ -137,7 +137,7 @@ Route::post('addressSearch',[ProfileController::class,'addressSearch']);
 ```
 ## :pushpin:JavaScriptを用いたプロフィール画像プレビュー機能
 - **初回登録時のプロフィール登録画面およびマイリストのプロフィール編集画面、商品出品画面において、選択画像のプレビュー機能を実装**
-- src/public/にjs/script.jsを作成し、auth/profile.blade.php内で使用。
+- src/public/にjs/preview.jsを作成し、auth/profile.blade.php内で使用。
 #### 参考文献
 - （書籍）<a href="https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FJavaScript%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4815615756/ref=asc_df_4815615756?mcid=28f7a8ed18ae32cd87c62ffa05be06d6&th=1&psc=1&tag=jpgo-22&linkCode=df0&hvadid=707442440829&hvpos=&hvnetw=g&hvrand=16030691145050053060&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9245132&hvtargid=pla-1944051673189&psc=1&hvocijid=16030691145050053060-4815615756-&hvexpln=0" target="_blank">一冊ですべて身に付くJavaScript入門講座</a>
 - <a href="https://zenn.dev/tatsuyasusukida/articles/javascript-image-preview" target="_blank">参考サイト</a>

@@ -20,7 +20,7 @@
         <div class="ttl__box">
             <img class="info__image" src="{{asset('storage/' . $product->image)}}" alt="購入商品画像">
             <div class="ttl-price__box">
-                <h2>商品名</h2>
+                <h2>{{$product->name}}</h2>
                 <span>¥ {{number_format($product->price)}}</span>
             </div>
         </div>

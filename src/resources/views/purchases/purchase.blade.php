@@ -81,7 +81,7 @@
     </div>
 </div>
 <!-- ここからAlpine.jsを利用したブラウザのリロードを挟まない小計画面の変更のコードです。利用する場合は上記の<div class="product-buy__box">以降のコードを消す、もしくはコメントアウトする。 -->
-<form action="/purchase/checkout/{{$product->id}}" method="post">
+<!-- <form action="/purchase/checkout/{{$product->id}}" method="post">
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">
             <div class="ttl__box">
@@ -141,5 +141,5 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 @endsection

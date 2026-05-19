@@ -76,7 +76,6 @@ a.logout-button{
 .error-message {
     color: red;
     background: linear-gradient(transparent 60%, #ffc1c1 40%);
-    display: inline-block;
 }
 .empty-message{
     color: red;

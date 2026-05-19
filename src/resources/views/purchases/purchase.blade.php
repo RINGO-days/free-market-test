@@ -81,13 +81,13 @@
     </div>
 </div>
 <!-- ここからAlpine.jsを利用したブラウザのリロードを挟まない小計画面の変更のコードです。利用する場合は上記の<div class="product-buy__box">以降のコードを消す、もしくはコメントアウトする。 -->
-<!-- <form action="/purchase/checkout/{{$product->id}}" method="post">
+<form action="/purchase/checkout/{{$product->id}}" method="post">
     <div class="product-buy__box"  x-data="{selectedName:'未選択'}">
         <div class="product-buy__info-box">
             <div class="ttl__box">
                 <img class="info__image" src="{{asset('storage/' . $product->image)}}" alt="購入商品画像">
                 <div class="ttl-price__box">
-                    <h2>商品名</h2>
+                    <h2>{{$product->name}}</h2>
                     <span>¥ {{number_format($product->price)}}</span>
                 </div>
             </div>
@@ -114,6 +114,11 @@
                 </div>
                 <p>〒{{session('post_code') ?? $user->post_code}}</p>
                 <p>{{session('address') ?? $user->address}}<br>{{session()->exists('building') ? session('building') : $user->building}}</p>
+                <div class="error-box">
+                @error('address')
+                    <span class="error-message">{{$message}}</span>
+                @enderror
+                </div>
                 <input type="hidden" name="post_code" value="{{session('post_code') ?? $user->post_code}}">
                 <input type="hidden" name="address" value="{{session('address') ?? $user->address}}">
                 <input type="hidden" name="building" value="{{session()->exists('building') ? session('building') : $user->building}}">
@@ -136,5 +141,5 @@
             </div>
         </div>
     </div>
-</form> -->
+</form>
 @endsection
